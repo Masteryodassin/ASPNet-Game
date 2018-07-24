@@ -9,12 +9,13 @@ using System.Web;
 using System.Web.Mvc;
 using AspNetGame.Models;
 using AspNetGame.Models.Game.Ships;
+using AspNetGame.Models.Game;
 
 namespace AspNetGame.Controllers.Game.Ships
 {
     public class CruisersController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private GameDbContext db = new GameDbContext();
 
         // GET: Cruisers
         public async Task<ActionResult> Index()

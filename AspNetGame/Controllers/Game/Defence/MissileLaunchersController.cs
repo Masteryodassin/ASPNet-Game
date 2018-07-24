@@ -9,12 +9,13 @@ using System.Web;
 using System.Web.Mvc;
 using AspNetGame.Models;
 using AspNetGame.Models.Game.Defence;
+using AspNetGame.Models.Game;
 
 namespace AspNetGame.Controllers.Game.Defence
 {
     public class MissileLaunchersController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private GameDbContext db = new GameDbContext();
 
         // GET: MissileLaunchers
         public async Task<ActionResult> Index()

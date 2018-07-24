@@ -9,12 +9,13 @@ using System.Web;
 using System.Web.Mvc;
 using AspNetGame.Models;
 using AspNetGame.Models.Game.Stores;
+using AspNetGame.Models.Game;
 
 namespace AspNetGame.Controllers.Game.Stores
 {
     public class GoldWarehousesController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private GameDbContext db = new GameDbContext();
 
         // GET: GoldWarehouses
         public async Task<ActionResult> Index()

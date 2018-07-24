@@ -9,12 +9,13 @@ using System.Web;
 using System.Web.Mvc;
 using AspNetGame.Models;
 using AspNetGame.Models.Game.Factories;
+using AspNetGame.Models.Game;
 
 namespace AspNetGame.Controllers.Game.Factories
 {
     public class WeaponFactoriesController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private GameDbContext db = new GameDbContext();
 
         // GET: WeaponFactories
         public async Task<ActionResult> Index()
