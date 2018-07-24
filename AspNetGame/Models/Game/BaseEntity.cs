@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,11 +11,13 @@ namespace AspNetGame.Models
     /// An interface that describes the base behavior of an entity.
     /// </summary>
     /// <typeparam name="ID">The type of the Primary key</typeparam>
-    interface BaseEntity<ID>
+    public abstract class BaseEntity<ID>
     {
         /// <summary>
         /// Returns the entity primary key.
         /// </summary>
-        ID PrimaryKey { get; set; }
+
+        [Key]
+        public ID PrimaryKey { get; set; }
     }
 }
