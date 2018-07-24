@@ -270,6 +270,7 @@
     <Compile Include="Models\Game\Factories\SpaceShipyard.cs" />
     <Compile Include="Models\Game\Factories\WeaponFactory.cs" />
     <Compile Include="Models\Game\GameDbContext.cs" />
+    <Compile Include="Models\Game\Planet.cs" />
     <Compile Include="Models\Game\Player.cs" />
     <Compile Include="Models\Game\BaseUnits\SpaceShip.cs" />
     <Compile Include="Models\Game\BaseUnits\Unit.cs" />
@@ -443,6 +444,9 @@
     <Folder Include="Controllers\Game\Mines\" />
     <Folder Include="Controllers\Game\Stores\" />
     <Folder Include="Views\Base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

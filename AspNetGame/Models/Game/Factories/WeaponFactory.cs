@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿using AspNetGame.Models.Game.Contracts;
 using AspNetGame.Models.Game.Core;
 using AspNetGame.Models.Game.Defence;
@@ -19,6 +18,8 @@ namespace AspNetGame.Models.Game.Factories
             };
         }
 
+    public class WeaponFactory : Building
+    {
         public override long GetConstructionDelay()
         {
             throw new NotImplementedException();
