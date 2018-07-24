@@ -233,6 +233,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Game\Ships\ScoutsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -246,6 +247,12 @@
     <Compile Include="Models\Game\BaseEntity.cs" />
     <Compile Include="Models\Game\BaseUnits\Building.cs" />
     <Compile Include="Models\Game\BaseUnits\Colony.cs" />
+    <Compile Include="Models\Game\Defence\LaserTower.cs" />
+    <Compile Include="Models\Game\Defence\MissileLauncher.cs" />
+    <Compile Include="Models\Game\Defence\PowerShield.cs" />
+    <Compile Include="Models\Game\Factories\ResearchCenter.cs" />
+    <Compile Include="Models\Game\Factories\SpaceShipyard.cs" />
+    <Compile Include="Models\Game\Factories\WeaponFactory.cs" />
     <Compile Include="Models\Game\Planet.cs" />
     <Compile Include="Models\Game\Player.cs" />
     <Compile Include="Models\Game\BaseUnits\SpaceShip.cs" />
@@ -257,6 +264,10 @@
     <Compile Include="Models\Game\Mines\IronMine.cs" />
     <Compile Include="Models\Game\Mines\IPlutoniumExtractor.cs" />
     <Compile Include="Models\Game\Mines\PlutoniumMine.cs" />
+    <Compile Include="Models\Game\Ships\Cruiser.cs" />
+    <Compile Include="Models\Game\Ships\Destroyer.cs" />
+    <Compile Include="Models\Game\Ships\Scout.cs" />
+    <Compile Include="Models\Game\Ships\Striker.cs" />
     <Compile Include="Models\Game\Stores\IGoldStore.cs" />
     <Compile Include="Models\Game\Stores\GoldWarehouse.cs" />
     <Compile Include="Models\Game\Stores\IIronStore.cs" />
@@ -328,6 +339,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Scouts\Create.cshtml" />
+    <Content Include="Views\Scouts\Delete.cshtml" />
+    <Content Include="Views\Scouts\Details.cshtml" />
+    <Content Include="Views\Scouts\Edit.cshtml" />
+    <Content Include="Views\Scouts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

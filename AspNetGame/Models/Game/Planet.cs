@@ -12,7 +12,7 @@ namespace AspNetGame.Models.Game.Core
     /// </summary>
     public class Planet : BaseEntity<long>
     {
-        public long PrimaryKey { get; set; }
+        //public long PrimaryKey { get; set; }
 
         /// <summary>
         /// The planet name

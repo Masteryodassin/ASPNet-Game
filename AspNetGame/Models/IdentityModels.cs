@@ -29,5 +29,7 @@ namespace AspNetGame.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<AspNetGame.Models.Game.Ships.Scout> Scouts { get; set; }
     }
 }
