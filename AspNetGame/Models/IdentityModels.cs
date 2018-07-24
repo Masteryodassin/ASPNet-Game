@@ -23,11 +23,32 @@ namespace AspNetGame.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+
+            this.Database.CreateIfNotExists();
+            if (!this.Database.CompatibleWithModel(false))
+            {
+                this.Database.Delete();
+                this.Database.CreateIfNotExists();
+            }
         }
         
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<AspNetGame.Models.Game.Ships.Scout> Scouts { get; set; }
+
+        public System.Data.Entity.DbSet<AspNetGame.Models.Game.Mines.GoldMine> GoldMines { get; set; }
+
+        public System.Data.Entity.DbSet<AspNetGame.Models.Game.Mines.PlutoniumMine> PlutoniumMines { get; set; }
+
+        public System.Data.Entity.DbSet<AspNetGame.Models.Game.Mines.IronMine> IronMines { get; set; }
+
+        public System.Data.Entity.DbSet<AspNetGame.Models.Game.Stores.PlutoniumWarehouse> PlutoniumWarehouses { get; set; }
+
+        public System.Data.Entity.DbSet<AspNetGame.Models.Game.Stores.GoldWarehouse> GoldWarehouses { get; set; }
+
+        public System.Data.Entity.DbSet<AspNetGame.Models.Game.Stores.IronWarehouse> IronWarehouses { get; set; }
     }
 }

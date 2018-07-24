@@ -11,7 +11,7 @@ namespace AspNetGame.Models.Game.Core
         public int Level { get; set; }
 
         public long Health { get; set; }
-        public long PrimaryKey { get; set; }
+        //public long PrimaryKey { get; set; }
 
         abstract public long GetConstructionDelay();
 

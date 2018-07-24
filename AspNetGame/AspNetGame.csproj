@@ -233,6 +233,13 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Game\Mines\GoldMinesController.cs" />
+    <Compile Include="Controllers\Game\Mines\IronMinesController.cs" />
+    <Compile Include="Controllers\Game\Mines\PlutoniumMinesController.cs" />
+    <Compile Include="Controllers\Game\Ships\ScoutsController.cs" />
+    <Compile Include="Controllers\Game\Stores\GoldWarehousesController.cs" />
+    <Compile Include="Controllers\Game\Stores\IronWarehousesController.cs" />
+    <Compile Include="Controllers\Game\Stores\PlutoniumWarehousesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -246,6 +253,12 @@
     <Compile Include="Models\Game\BaseEntity.cs" />
     <Compile Include="Models\Game\BaseUnits\Building.cs" />
     <Compile Include="Models\Game\BaseUnits\Colony.cs" />
+    <Compile Include="Models\Game\Defence\LaserTower.cs" />
+    <Compile Include="Models\Game\Defence\MissileLauncher.cs" />
+    <Compile Include="Models\Game\Defence\PowerShield.cs" />
+    <Compile Include="Models\Game\Factories\ResearchCenter.cs" />
+    <Compile Include="Models\Game\Factories\SpaceShipyard.cs" />
+    <Compile Include="Models\Game\Factories\WeaponFactory.cs" />
     <Compile Include="Models\Game\Planet.cs" />
     <Compile Include="Models\Game\Player.cs" />
     <Compile Include="Models\Game\BaseUnits\SpaceShip.cs" />
@@ -257,6 +270,10 @@
     <Compile Include="Models\Game\Mines\IronMine.cs" />
     <Compile Include="Models\Game\Mines\IPlutoniumExtractor.cs" />
     <Compile Include="Models\Game\Mines\PlutoniumMine.cs" />
+    <Compile Include="Models\Game\Ships\Cruiser.cs" />
+    <Compile Include="Models\Game\Ships\Destroyer.cs" />
+    <Compile Include="Models\Game\Ships\Scout.cs" />
+    <Compile Include="Models\Game\Ships\Striker.cs" />
     <Compile Include="Models\Game\Stores\IGoldStore.cs" />
     <Compile Include="Models\Game\Stores\GoldWarehouse.cs" />
     <Compile Include="Models\Game\Stores\IIronStore.cs" />
@@ -328,10 +345,44 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Scouts\Create.cshtml" />
+    <Content Include="Views\Scouts\Delete.cshtml" />
+    <Content Include="Views\Scouts\Details.cshtml" />
+    <Content Include="Views\Scouts\Edit.cshtml" />
+    <Content Include="Views\Scouts\Index.cshtml" />
+    <Content Include="Views\GoldMines\Create.cshtml" />
+    <Content Include="Views\GoldMines\Delete.cshtml" />
+    <Content Include="Views\GoldMines\Details.cshtml" />
+    <Content Include="Views\GoldMines\Edit.cshtml" />
+    <Content Include="Views\GoldMines\Index.cshtml" />
+    <Content Include="Views\PlutoniumMines\Create.cshtml" />
+    <Content Include="Views\PlutoniumMines\Delete.cshtml" />
+    <Content Include="Views\PlutoniumMines\Details.cshtml" />
+    <Content Include="Views\PlutoniumMines\Edit.cshtml" />
+    <Content Include="Views\PlutoniumMines\Index.cshtml" />
+    <Content Include="Views\IronMines\Create.cshtml" />
+    <Content Include="Views\IronMines\Delete.cshtml" />
+    <Content Include="Views\IronMines\Details.cshtml" />
+    <Content Include="Views\IronMines\Edit.cshtml" />
+    <Content Include="Views\IronMines\Index.cshtml" />
+    <Content Include="Views\PlutoniumWarehouses\Create.cshtml" />
+    <Content Include="Views\PlutoniumWarehouses\Delete.cshtml" />
+    <Content Include="Views\PlutoniumWarehouses\Details.cshtml" />
+    <Content Include="Views\PlutoniumWarehouses\Edit.cshtml" />
+    <Content Include="Views\PlutoniumWarehouses\Index.cshtml" />
+    <Content Include="Views\GoldWarehouses\Create.cshtml" />
+    <Content Include="Views\GoldWarehouses\Delete.cshtml" />
+    <Content Include="Views\GoldWarehouses\Details.cshtml" />
+    <Content Include="Views\GoldWarehouses\Edit.cshtml" />
+    <Content Include="Views\GoldWarehouses\Index.cshtml" />
+    <Content Include="Views\IronWarehouses\Create.cshtml" />
+    <Content Include="Views\IronWarehouses\Delete.cshtml" />
+    <Content Include="Views\IronWarehouses\Details.cshtml" />
+    <Content Include="Views\IronWarehouses\Edit.cshtml" />
+    <Content Include="Views\IronWarehouses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Game\Ships\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
