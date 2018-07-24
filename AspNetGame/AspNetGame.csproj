@@ -331,6 +331,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\Game\Mines\" />
+    <Folder Include="Controllers\Game\Stores\" />
     <Folder Include="Models\Game\Ships\" />
   </ItemGroup>
   <ItemGroup>
