@@ -240,6 +240,16 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Game\Contracts\Attacker.cs" />
+    <Compile Include="Models\Game\Contracts\Mobile.cs" />
+    <Compile Include="Models\Game\Contracts\Terrestrial.cs" />
+    <Compile Include="Models\Game\BaseEntity.cs" />
+    <Compile Include="Models\Game\BaseUnits\Building.cs" />
+    <Compile Include="Models\Game\BaseUnits\Colony.cs" />
+    <Compile Include="Models\Game\Planet.cs" />
+    <Compile Include="Models\Game\Player.cs" />
+    <Compile Include="Models\Game\BaseUnits\SpaceShip.cs" />
+    <Compile Include="Models\Game\BaseUnits\Unit.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
