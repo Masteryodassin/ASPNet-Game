@@ -47,7 +47,7 @@ namespace AspNetGame.Providers
                 player.Planets = new List<Planet>();
             }
 
-            List<Building>
+            List<Building> buildings = 
 
             if (player.Planets.Count == 0)
             {
@@ -58,7 +58,7 @@ namespace AspNetGame.Providers
                         IronStock = 20000,
                         GoldStock = 8000,
                         PlutoniumStock = 2000
-                        Buildings = 
+                       
                     }
                 };
                 GameContext.SaveChanges();

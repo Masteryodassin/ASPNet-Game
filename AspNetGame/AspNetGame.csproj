@@ -442,6 +442,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Controllers\Game\Mines\" />
+    <Folder Include="Controllers\Game\Stores\" />
+    <Folder Include="Models\Game\Ships\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
