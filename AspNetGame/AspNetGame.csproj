@@ -240,6 +240,20 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Game\Mines\IExtractor.cs" />
+    <Compile Include="Models\Game\Mines\IGoldExtractor.cs" />
+    <Compile Include="Models\Game\Mines\GoldMine.cs" />
+    <Compile Include="Models\Game\Mines\IIronExtractor.cs" />
+    <Compile Include="Models\Game\Mines\IronMine.cs" />
+    <Compile Include="Models\Game\Mines\IPlutoniumExtractor.cs" />
+    <Compile Include="Models\Game\Mines\PlutoniumMine.cs" />
+    <Compile Include="Models\Game\Stores\IGoldStore.cs" />
+    <Compile Include="Models\Game\Stores\GoldWarehouse.cs" />
+    <Compile Include="Models\Game\Stores\IIronStore.cs" />
+    <Compile Include="Models\Game\Stores\IronWarehouse.cs" />
+    <Compile Include="Models\Game\Stores\IPlutoniumStore.cs" />
+    <Compile Include="Models\Game\Stores\PlutoniumWarehouse.cs" />
+    <Compile Include="Models\Game\Stores\IStore.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
