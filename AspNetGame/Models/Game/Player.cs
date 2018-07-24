@@ -10,8 +10,6 @@ namespace AspNetGame.Models.Game.Core
     /// </summary>
     public class Player : BaseEntity<long>
     {
-        //public long PrimaryKey { get; set; }
-
         /// <summary>
         /// The player's nickname
         /// </summary>

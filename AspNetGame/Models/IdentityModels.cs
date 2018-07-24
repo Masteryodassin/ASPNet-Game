@@ -23,7 +23,6 @@ namespace AspNetGame.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-
             this.Database.CreateIfNotExists();
             if (!this.Database.CompatibleWithModel(false))
             {
