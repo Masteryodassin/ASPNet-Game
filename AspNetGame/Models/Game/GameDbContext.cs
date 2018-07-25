@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using AspNetGame.Models.Game.Core;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,17 +12,20 @@ namespace AspNetGame.Models.Game
     {
         public GameDbContext() : base("GameConnection")
         {
-            this.Database.CreateIfNotExists();
+            if (this.Database.CreateIfNotExists()) {
+                Seed(this);
+            }
             if (!this.Database.CompatibleWithModel(false))
             {
                 this.Database.Delete();
-                this.Database.CreateIfNotExists();
+                if (this.Database.CreateIfNotExists()) {
+                    Seed(this);
+                }
             }
         }
 
-        public static GameDbContext Create()
+        private void Seed(GameDbContext context)
         {
-            return new GameDbContext();
         }
 
         public System.Data.Entity.DbSet<AspNetGame.Models.Game.Ships.Scout> Scouts { get; set; }
@@ -55,6 +59,6 @@ namespace AspNetGame.Models.Game
         public System.Data.Entity.DbSet<AspNetGame.Models.Game.Factories.ResearchCenter> ResearchCenters { get; set; }
 
         public System.Data.Entity.DbSet<AspNetGame.Models.Game.Factories.WeaponFactory> WeaponFactories { get; set; }
-        
+        public System.Data.Entity.DbSet<AspNetGame.Models.Game.Core.Planet> Planets { get; set; }
     }
 }
