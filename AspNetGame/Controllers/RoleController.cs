@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using shanuMVCUserRoles.Models;
+using AspNetGame.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
 
-namespace shanuMVCUserRoles.Controllers
+namespace AspNetGame.Controllers
 {
 	[Authorize]
 	public class RoleController : Controller
