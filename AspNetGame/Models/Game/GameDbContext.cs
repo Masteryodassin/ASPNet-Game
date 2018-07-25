@@ -28,6 +28,8 @@ namespace AspNetGame.Models.Game
         {
         }
 
+        public System.Data.Entity.DbSet<AspNetGame.Models.Game.Core.Player> Players { get; set; }
+            
         public System.Data.Entity.DbSet<AspNetGame.Models.Game.Ships.Scout> Scouts { get; set; }
 
         public System.Data.Entity.DbSet<AspNetGame.Models.Game.Mines.GoldMine> GoldMines { get; set; }

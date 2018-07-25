@@ -244,6 +244,7 @@
     <Compile Include="Controllers\Game\Factories\SpaceShipyardsController.cs" />
     <Compile Include="Controllers\Game\Factories\WeaponFactoriesController.cs" />
     <Compile Include="Controllers\Game\PlanetsController.cs" />
+    <Compile Include="Controllers\Game\PlayersController.cs" />
     <Compile Include="Controllers\Game\Ships\CruisersController.cs" />
     <Compile Include="Controllers\Game\Ships\DestroyersController.cs" />
     <Compile Include="Controllers\Game\Ships\ScoutsController.cs" />
@@ -464,6 +465,7 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Planets\Index.cshtml" />
+    <Content Include="Views\Players\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
