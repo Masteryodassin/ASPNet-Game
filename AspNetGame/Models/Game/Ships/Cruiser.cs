@@ -4,12 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace AspNetGame.Models.Game.Ships
 {
     public class Cruiser : SpaceShip, Attacker
     {
-        public long AttackPoint { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public void Attack(System.Web.UI.WebControls.Unit target)
+        {
+            throw new NotImplementedException();
+        }
 
         public override long GetConstructionDelay()
         {

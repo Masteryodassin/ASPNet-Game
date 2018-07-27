@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace AspNetGame.Models.Game.Contracts
 {
-    /// <summary>
-    /// Represents the behavior of a terrestrial unit, which means
-    /// a unit that is build on a planet
-    /// </summary>
-    public interface Terrestrial
+    public abstract class Builder : Building
     {
-
+        abstract public List<Type> CanBuild();
     }
 }

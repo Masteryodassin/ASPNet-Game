@@ -168,7 +168,7 @@ namespace AspNetGame.Controllers
 					//Assign Role to user Here   
 					await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
 					//Ends Here 
-					return RedirectToAction("Index", "Users");
+					return RedirectToAction("Index", "Planets");
 				}
 				ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
 										  .ToList(), "Name", "Name");
@@ -456,7 +456,7 @@ namespace AspNetGame.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Users");
+            return RedirectToAction("Index", "Planets");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

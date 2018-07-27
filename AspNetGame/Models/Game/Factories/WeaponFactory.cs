@@ -1,4 +1,6 @@
-﻿using AspNetGame.Models.Game.Core;
+﻿using AspNetGame.Models.Game.Contracts;
+using AspNetGame.Models.Game.Core;
+using AspNetGame.Models.Game.Defence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +8,16 @@ using System.Web;
 
 namespace AspNetGame.Models.Game.Factories
 {
-    public class WeaponFactory : Building
+    public class WeaponFactory : Builder
     {
+        public override List<Type> CanBuild()
+        {
+            return new List<Type>()
+            {
+                typeof(LaserTower), typeof(MissileLauncher), typeof(PowerShield)
+            };
+        }
+
         public override long GetConstructionDelay()
         {
             throw new NotImplementedException();

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<AspNetGame.Models.Game.Core.Planet>
+@{
+    ViewBag.Title = "Planètes du joueur";
+}
+
+<h2>Hello !!</h2>
+
+<ul>
+    @foreach(var planet in Model)
+    {
+        <li>@Html.DisplayFor(modelItem => planet.Name)</li>
+        <ul>
+                <li>
+                    <strong>@Html.LabelFor(modelItem => planet.IronStock)</strong> :
+                    @Html.DisplayFor(modelItem => planet.IronStock)
+                </li>
+                <li>
+                    <strong>@Html.LabelFor(modelItem => planet.GoldStock)</strong> :
+                    @Html.DisplayFor(modelItem => planet.GoldStock)
+                </li>
+                <li>
+                    <strong>@Html.LabelFor(modelItem => planet.PlutoniumStock)</strong> :
+                    @Html.DisplayFor(modelItem => planet.PlutoniumStock)
+                </li>
+                <li>
+                    <strong>Owner</strong> :
+                    @Html.DisplayFor(modelItem => planet.Player.Nickname)
+                </li>
+                <li>
+                    @Html.ActionLink("Liste des bâtiments", "Details");
+                </li>
+        </ul>
+    }
+</ul>

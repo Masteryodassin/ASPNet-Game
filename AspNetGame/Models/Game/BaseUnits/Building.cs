@@ -9,12 +9,24 @@ namespace AspNetGame.Models.Game.Core
     public abstract class Building : Unit, Terrestrial
     {
 
-        private Planet planet;
+        protected List<BuildingJob> buildingStack = new List<BuildingJob>();
 
-        public Planet Planet
+        public Planet Planet { get; set; }
+
+        public List<BuildingJob> BuildingStack
         {
-            get { return planet; }
-            set { planet = value; }
+            get
+            {
+                return (this is Builder) ? buildingStack.Where(job => !job.IsFinished()).ToList() : new List<BuildingJob>();
+            }
+
+            set
+            {
+                if (this is Builder)
+                {
+                    buildingStack = value;
+                }
+            }
         }
 
         abstract public void LevelUp();
