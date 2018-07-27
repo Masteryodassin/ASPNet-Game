@@ -22,12 +22,17 @@ namespace AspNetGame.Controllers.Game
 
         public ActionResult Details(long? id)
         {
+            Planet planet = null;
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            planet = Player.Planets.ToList().First(pl => pl.PrimaryKey.Equals(id.Value));
+            List<Building> buildings = planet.Buildings;
 
-            Planet planet = null;
+
+          
             try
             {
                 planet = Player.Planets.ToList().First(pl => pl.PrimaryKey.Equals(id.Value));

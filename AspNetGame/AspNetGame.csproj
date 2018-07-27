@@ -250,7 +250,6 @@
     <Compile Include="Models\Game\Contracts\Attacker.cs" />
     <Compile Include="Models\Game\Contracts\Builder.cs" />
     <Compile Include="Models\Game\Contracts\Mobile.cs" />
-    <Compile Include="Models\Game\Contracts\Terrestrial.cs" />
     <Compile Include="Models\Game\BaseEntity.cs" />
     <Compile Include="Models\Game\BaseUnits\Building.cs" />
     <Compile Include="Models\Game\BaseUnits\Colony.cs" />

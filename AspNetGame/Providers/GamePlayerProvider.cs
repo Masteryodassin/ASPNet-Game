@@ -32,6 +32,7 @@ namespace AspNetGame.Providers
 
             string username = user.Identity.Name;
             Player player = GameContext.Players
+                .Include("Planets")
                 .FirstOrDefault(p => p.Username.Equals(username));
 
             if (player == null)
@@ -46,6 +47,8 @@ namespace AspNetGame.Providers
                 player.Planets = new List<Planet>();
             }
 
+            List<Building>
+
             if (player.Planets.Count == 0)
             {
                 player.Planets = new List<Planet>() {
@@ -55,6 +58,7 @@ namespace AspNetGame.Providers
                         IronStock = 20000,
                         GoldStock = 8000,
                         PlutoniumStock = 2000
+                        Buildings = 
                     }
                 };
                 GameContext.SaveChanges();

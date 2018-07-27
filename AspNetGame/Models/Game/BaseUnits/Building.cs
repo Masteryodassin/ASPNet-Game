@@ -6,7 +6,7 @@ using System.Web;
 
 namespace AspNetGame.Models.Game.Core
 {
-    public abstract class Building : Unit, Terrestrial
+    public abstract class Building : Unit
     {
 
         protected List<BuildingJob> buildingStack = new List<BuildingJob>();

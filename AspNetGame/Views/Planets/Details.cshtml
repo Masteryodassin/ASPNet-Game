@@ -5,5 +5,10 @@
 
 <h2>Details</h2>
 
-Détails de la planète @Model.Name
+<ul>
+    @foreach (var building in Model.Buildings )
+    {
+        <li>@Html.DisplayFor(modelItem => building.Name)</li>
+    }
+</ul>
 

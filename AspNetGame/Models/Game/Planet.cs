@@ -41,6 +41,6 @@ namespace AspNetGame.Models.Game.Core
         /// <summary>
         /// The list of terrestrial units build on the planet (OneToMany)
         /// </summary>
-        public List<Terrestrial> terrestrialUnits { get; set; }
+        public List<Building> Buildings { get; set; }
     }
 }
