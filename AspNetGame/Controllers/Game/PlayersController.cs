@@ -23,7 +23,7 @@ namespace AspNetGame.Controllers.Game
             context = new ApplicationDbContext();
         }
 
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             return View();
         }

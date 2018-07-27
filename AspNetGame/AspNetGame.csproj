@@ -275,6 +275,7 @@
     <Compile Include="Models\Game\Factories\SpaceShipyard.cs" />
     <Compile Include="Models\Game\Factories\WeaponFactory.cs" />
     <Compile Include="Models\Game\GameDbContext.cs" />
+    <Compile Include="Models\Game\GameModelManager.cs" />
     <Compile Include="Models\Game\Planet.cs" />
     <Compile Include="Models\Game\Player.cs" />
     <Compile Include="Models\Game\BaseUnits\SpaceShip.cs" />
@@ -286,6 +287,7 @@
     <Compile Include="Models\Game\Mines\IronMine.cs" />
     <Compile Include="Models\Game\Mines\IPlutoniumExtractor.cs" />
     <Compile Include="Models\Game\Mines\PlutoniumMine.cs" />
+    <Compile Include="Models\Game\IoC.cs" />
     <Compile Include="Models\Game\Ships\Cruiser.cs" />
     <Compile Include="Models\Game\Ships\Destroyer.cs" />
     <Compile Include="Models\Game\Ships\Scout.cs" />
@@ -297,10 +299,12 @@
     <Compile Include="Models\Game\Stores\IPlutoniumStore.cs" />
     <Compile Include="Models\Game\Stores\PlutoniumWarehouse.cs" />
     <Compile Include="Models\Game\Stores\IStore.cs" />
+    <Compile Include="Models\Game\Universe.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Providers\GamePlayerProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

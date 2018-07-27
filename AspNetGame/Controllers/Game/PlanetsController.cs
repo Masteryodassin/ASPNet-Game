@@ -4,21 +4,35 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
 namespace AspNetGame.Controllers.Game
 {
-    public class PlanetsController : ReadController<Planet, long>
+    [Authorize]
+    public class PlanetsController : GameControllerBase
     {
-        public PlanetsController()
+        public ActionResult Index()
         {
-            Context = new GameDbContext();
+            return View(Player.Planets);
         }
 
-        public override DbSet<Planet> DbSet()
+        public ActionResult Details(long? id)
         {
-            return ((GameDbContext)Context).PlanetFactories;
+
+            
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Planet planet = Player.Planets.Where(p => p.PrimaryKey.Equals(id)).FirstOrDefault(null);
+            if (planet == null)
+            {
+                return HttpNotFound();
+            }
+            return View(planet);
         }
 
 

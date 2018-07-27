@@ -16,13 +16,14 @@ namespace AspNetGame.Models.Game.Core
         public string Nickname { get; set; }
 
         /// <summary>
-        /// The player's email according to the corresponding User's one
+        /// The player's username according to the corresponding User's one
         /// </summary>
-        public string Email { get; set; }
+        //[UniqueConstraint]
+        public string Username { get; set; }
 
         /// <summary>
         /// The list of planets occupied by the player (OneToMany)
         /// </summary>
-        public List<Planet> planets { get; set; }
+        public List<Planet> Planets { get; set; }
     }
 }

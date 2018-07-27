@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AspNetGame.Models;
+using AspNetGame.Models.Game;
+using AspNetGame.Providers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +21,19 @@ namespace AspNetGame
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            Initialize_Context();
+            
+        }
+
+        protected void Initialize_Context()
+        {
+
+            IoC.Register(new GamePlayerProvider(), (provider) =>
+            {
+                provider.AppContext = IoC.Resolve<ApplicationDbContext>();
+                provider.GameContext = IoC.Resolve<GameDbContext>();
+            });
         }
     }
 }

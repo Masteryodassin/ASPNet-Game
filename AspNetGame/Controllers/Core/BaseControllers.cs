@@ -1,5 +1,7 @@
 ﻿using AspNetGame.Models;
 using AspNetGame.Models.Game;
+using AspNetGame.Models.Game.Core;
+using AspNetGame.Providers;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,25 +11,47 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace AspNetGame.Controllers.Game
 {
-    public interface IBaseController<TEntity, TId> where TEntity : BaseEntity<TId>
+    public abstract class GameControllerBase : Controller
+    {
+        private readonly GameDbContext context = IoC.Resolve<GameDbContext>();
+        private readonly GamePlayerProvider playerProvider = IoC.Resolve<GamePlayerProvider>();
+
+        public Player Player
+        {
+            get {
+                if (playerProvider != null && User != null)
+                {
+                    return playerProvider.GetPlayer(User);
+                } else
+                {
+                    throw new Exception("PlayerProvider or User must not be null.");
+                }
+            }
+        }
+
+        public GameDbContext Context { get { return context; } }
+
+    }
+    /*public interface IBaseController<TEntity, TId> where TEntity : BaseEntity<TId>
     {
         /// <summary>
         /// A method that provides to the controller logic the DbSet to use to manage data entity.
         /// </summary>
         /// <returns></returns>
         DbSet<TEntity> DbSet();
-    }
+    }*/
 
-    public interface IMvcReadOperations<TId>
+    /*public interface IMvcReadOperations<TId>
     {
         Task<ActionResult> Index();
 
         Task<ActionResult> Details(TId id);
-    }
+    }*/
 
-    public abstract class BaseController<TEntity, TId> : Controller, IBaseController<TEntity, TId> 
+    /*public abstract class BaseController<TEntity, TId> : Controller
         where TEntity : BaseEntity<TId>
     {
         private DbContext context;
@@ -37,7 +61,6 @@ namespace AspNetGame.Controllers.Game
             get { return context; }
             set { context = value; }
         }
-
         public abstract DbSet<TEntity> DbSet();
 
         /// <summary>
@@ -45,11 +68,13 @@ namespace AspNetGame.Controllers.Game
         /// </summary>
         /// <returns></returns>
         public virtual string ViewName() { return null; }
-    }
+    }*/
 
-    public abstract class ReadController<TEntity, TId> : BaseController<TEntity, TId>, IMvcReadOperations<TId>
+    /*public abstract class ReadController<TEntity, TId> : GameControllerBase<TEntity, TId>, IMvcReadOperations<TId>
     where TEntity : BaseEntity<TId>
     {
+
+        protected ReadController() : base() { }
 
         public async Task<ActionResult> Index()
         {
@@ -77,6 +102,6 @@ namespace AspNetGame.Controllers.Game
             return base.View(ViewName(), model);
         }
 
-
-    }
+    
+    }*/
 }
