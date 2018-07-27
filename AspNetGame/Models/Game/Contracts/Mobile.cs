@@ -9,10 +9,8 @@ namespace AspNetGame.Models.Game.Contracts
 {
     public interface Mobile
     {
-        Planet Position { get; set; }
-
         void Move(Planet destination);
 
-        bool Moving { get; set; }
+        bool IsMoving();
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 
 namespace AspNetGame.Models.Game.Contracts
 {
@@ -12,8 +13,9 @@ namespace AspNetGame.Models.Game.Contracts
     public interface Attacker
     {
         /// <summary>
-        /// The attack point, which means the amount of damage that the unit can cause.
+        /// Attacks a unit
         /// </summary>
-        long AttackPoint { get; set; }
+        /// <param name="target">The unit to attack</param>
+        void Attack(Unit target);
     }
 }

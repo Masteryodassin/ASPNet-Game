@@ -1,5 +1,6 @@
 ﻿using AspNetGame.Models.Game;
 using AspNetGame.Models.Game.Core;
+using AspNetGame.Services;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -21,17 +22,21 @@ namespace AspNetGame.Controllers.Game
 
         public ActionResult Details(long? id)
         {
-
-            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Planet planet = Player.Planets.Where(p => p.PrimaryKey.Equals(id)).FirstOrDefault(null);
-            if (planet == null)
+
+            Planet planet = null;
+            try
             {
-                return HttpNotFound();
+                planet = Player.Planets.ToList().First(pl => pl.PrimaryKey.Equals(id.Value));
+            } catch (InvalidOperationException)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
+            
+
             return View(planet);
         }
 

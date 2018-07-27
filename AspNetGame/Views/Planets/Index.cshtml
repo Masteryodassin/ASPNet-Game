@@ -26,6 +26,9 @@
                     <strong>Owner</strong> :
                     @Html.DisplayFor(modelItem => planet.Player.Nickname)
                 </li>
+                <li>
+                    @Html.ActionLink("Liste des bâtiments", "Details");
+                </li>
         </ul>
     }
 </ul>

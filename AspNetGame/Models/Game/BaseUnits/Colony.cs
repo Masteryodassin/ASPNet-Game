@@ -31,5 +31,10 @@ namespace AspNetGame.Models.Game.Core
         {
             throw new NotImplementedException();
         }
+
+        public int GetWorkersCount()
+        {
+            return 2 + (int) Math.Floor(Level * 0.5);
+        }
     }
 }
