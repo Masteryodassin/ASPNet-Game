@@ -1,10 +1,8 @@
-<<<<<<< HEAD
-﻿using AspNetGame.Models.Game.Contracts;
+
+using AspNetGame.Models.Game.Contracts;
 using AspNetGame.Models.Game.Core;
 using AspNetGame.Models.Game.Ships;
-=======
 ﻿using AspNetGame.Models.Game.Core;
->>>>>>> e94ab7d... Fixing BaseEntity Behaviour / Added ScoutController / Added defence and ships concrete classes
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +20,6 @@ namespace AspNetGame.Models.Game.Factories
             };
         }
 
-    public class SpaceShipyard : Building
-    {
         public override long GetConstructionDelay()
         {
             throw new NotImplementedException();

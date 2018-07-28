@@ -18,8 +18,6 @@ namespace AspNetGame.Models.Game.Factories
             };
         }
 
-    public class WeaponFactory : Building
-    {
         public override long GetConstructionDelay()
         {
             throw new NotImplementedException();

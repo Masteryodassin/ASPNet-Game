@@ -47,7 +47,7 @@ namespace AspNetGame.Providers
                 player.Planets = new List<Planet>();
             }
 
-            List<Building> buildings = 
+          
 
             if (player.Planets.Count == 0)
             {
