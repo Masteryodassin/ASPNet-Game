@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using AspNetGame.Models.Game.Contracts;
 using AspNetGame.Models.Game.Core;
 using AspNetGame.Models.Game.Defence;

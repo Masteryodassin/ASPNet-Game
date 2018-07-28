@@ -244,8 +244,8 @@
     <Compile Include="Controllers\Game\Factories\WeaponFactoriesController.cs" />
     <Compile Include="Controllers\Game\Ships\CruisersController.cs" />
     <Compile Include="Controllers\Game\Ships\DestroyersController.cs" />
-    <Compile Include="Controllers\Game\Ships\ScoutsController.cs" />
     <Compile Include="Controllers\Game\Ships\StrikersController.cs" />
+    <Compile Include="Controllers\Game\Ships\ScoutsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
@@ -270,7 +270,6 @@
     <Compile Include="Models\Game\Factories\SpaceShipyard.cs" />
     <Compile Include="Models\Game\Factories\WeaponFactory.cs" />
     <Compile Include="Models\Game\GameDbContext.cs" />
-    <Compile Include="Models\Game\Planet.cs" />
     <Compile Include="Models\Game\Player.cs" />
     <Compile Include="Models\Game\BaseUnits\SpaceShip.cs" />
     <Compile Include="Models\Game\BaseUnits\Unit.cs" />
@@ -441,11 +440,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Base\" />
     <Folder Include="Controllers\Game\Mines\" />
     <Folder Include="Controllers\Game\Stores\" />
-    <Folder Include="Models\Game\Ships\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
   </ItemGroup>
