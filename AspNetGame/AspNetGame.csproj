@@ -233,9 +233,10 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\Core\BaseControllers.cs" />
-    <Compile Include="Controllers\Game\PlanetsController.cs" />
-    <Compile Include="Controllers\Game\PlayersController.cs" />
+    <Compile Include="Controllers\Game\Core\BaseController.cs" />
+    <Compile Include="Controllers\Game\Core\GameController.cs" />
+    <Compile Include="Controllers\Game\ResourceController.cs" />
+    <Compile Include="Controllers\Game\UnitTemplateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
@@ -246,47 +247,26 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Game\BuildingJob.cs" />
-    <Compile Include="Models\Game\Contracts\Attacker.cs" />
-    <Compile Include="Models\Game\Contracts\Builder.cs" />
-    <Compile Include="Models\Game\Contracts\Mobile.cs" />
-    <Compile Include="Models\Game\Contracts\Terrestrial.cs" />
-    <Compile Include="Models\Game\BaseEntity.cs" />
-    <Compile Include="Models\Game\BaseUnits\Building.cs" />
-    <Compile Include="Models\Game\BaseUnits\Colony.cs" />
-    <Compile Include="Models\Game\Defence\LaserTower.cs" />
-    <Compile Include="Models\Game\Defence\MissileLauncher.cs" />
-    <Compile Include="Models\Game\Defence\PowerShield.cs" />
-    <Compile Include="Models\Game\Factories\ResearchCenter.cs" />
-    <Compile Include="Models\Game\Factories\SpaceShipyard.cs" />
-    <Compile Include="Models\Game\Factories\WeaponFactory.cs" />
+    <Compile Include="Models\Game\Base\Abilities.cs" />
+    <Compile Include="Models\Game\Base\Cost.cs" />
+    <Compile Include="Models\Game\Base\Resource.cs" />
+    <Compile Include="Models\Game\Contracts\IAttacker.cs" />
+    <Compile Include="Models\Game\Contracts\IBuilder.cs" />
+    <Compile Include="Models\Game\Contracts\IExtractor.cs" />
+    <Compile Include="Models\Game\Contracts\IMobile.cs" />
+    <Compile Include="Models\Game\Contracts\IResearcher.cs" />
+    <Compile Include="Models\Game\Contracts\IStore.cs" />
+    <Compile Include="Models\Game\Core\BaseEntity.cs" />
+    <Compile Include="Models\Game\Core\DisplayableEntity.cs" />
     <Compile Include="Models\Game\GameDbContext.cs" />
     <Compile Include="Models\Game\Planet.cs" />
     <Compile Include="Models\Game\Player.cs" />
-    <Compile Include="Models\Game\BaseUnits\SpaceShip.cs" />
-    <Compile Include="Models\Game\BaseUnits\Unit.cs" />
-    <Compile Include="Models\Game\Mines\IExtractor.cs" />
-    <Compile Include="Models\Game\Mines\IGoldExtractor.cs" />
-    <Compile Include="Models\Game\Mines\GoldMine.cs" />
-    <Compile Include="Models\Game\Mines\IIronExtractor.cs" />
-    <Compile Include="Models\Game\Mines\IronMine.cs" />
-    <Compile Include="Models\Game\Mines\IPlutoniumExtractor.cs" />
-    <Compile Include="Models\Game\Mines\PlutoniumMine.cs" />
-    <Compile Include="Models\Game\Utils.cs" />
-    <Compile Include="Services\GameModelManager.cs" />
-    <Compile Include="Services\AbstractService.cs" />
+    <Compile Include="Models\Game\Units\UnitTemplate.cs" />
+    <Compile Include="Repositories\Core\BaseRepository.cs" />
+    <Compile Include="Repositories\Core\IRepository.cs" />
+    <Compile Include="Repositories\ResourceRepository.cs" />
+    <Compile Include="Repositories\UnitTemplateRepository.cs" />
     <Compile Include="Services\IoC.cs" />
-    <Compile Include="Models\Game\Ships\Cruiser.cs" />
-    <Compile Include="Models\Game\Ships\Destroyer.cs" />
-    <Compile Include="Models\Game\Ships\Scout.cs" />
-    <Compile Include="Models\Game\Ships\Striker.cs" />
-    <Compile Include="Models\Game\Stores\IGoldStore.cs" />
-    <Compile Include="Models\Game\Stores\GoldWarehouse.cs" />
-    <Compile Include="Models\Game\Stores\IIronStore.cs" />
-    <Compile Include="Models\Game\Stores\IronWarehouse.cs" />
-    <Compile Include="Models\Game\Stores\IPlutoniumStore.cs" />
-    <Compile Include="Models\Game\Stores\PlutoniumWarehouse.cs" />
-    <Compile Include="Models\Game\Stores\IStore.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -301,6 +281,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\background.jpg" />
+    <Content Include="Content\Images\empty.png" />
+    <Content Include="Content\Images\noimageavailable.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -328,7 +311,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ClassDiagram2.cd" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -376,13 +358,21 @@
     <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Planets\Index.cshtml" />
-    <Content Include="Views\Players\Index.cshtml" />
-    <Content Include="Views\Planets\Details.cshtml" />
+    <Content Include="Views\Resource\Details.cshtml" />
+    <Content Include="Views\Resource\Index.cshtml" />
+    <Content Include="Views\Shared\ResourcesCost.cshtml" />
+    <Content Include="Views\UnitTemplate\Create.cshtml" />
+    <Content Include="Views\UnitTemplate\Details.cshtml" />
+    <Content Include="Views\UnitTemplate\Fragments\Attacker.cshtml" />
+    <Content Include="Views\UnitTemplate\Fragments\Builder.cshtml" />
+    <Content Include="Views\UnitTemplate\Fragments\Extractor.cshtml" />
+    <Content Include="Views\UnitTemplate\Fragments\Mobile.cshtml" />
+    <Content Include="Views\UnitTemplate\Fragments\Researcher.cshtml" />
+    <Content Include="Views\UnitTemplate\Fragments\Storage.cshtml" />
+    <Content Include="Views\UnitTemplate\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

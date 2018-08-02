@@ -1,4 +1,6 @@
-﻿using AspNetGame.Models.Game.Core;
+﻿using AspNetGame.Models.Game.Base;
+using AspNetGame.Models.Game.Core;
+using AspNetGame.Models.Game.Units;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -28,12 +30,11 @@ namespace AspNetGame.Models.Game
         {
         }
 
-        public System.Data.Entity.DbSet<Building> Buildings { get; set; }
+        public System.Data.Entity.DbSet<UnitTemplate> UnitTemplates { get; set; }
 
-        public System.Data.Entity.DbSet<Unit> Units { get; set; }
+        public System.Data.Entity.DbSet<Player> Players { get; set; }
 
-        public System.Data.Entity.DbSet<AspNetGame.Models.Game.Core.Player> Players { get; set; }
+        //public System.Data.Entity.DbSet<Planet> Planets { get; set; }
         
-        public System.Data.Entity.DbSet<AspNetGame.Models.Game.Core.Planet> Planets { get; set; }
     }
 }

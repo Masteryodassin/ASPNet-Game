@@ -1,0 +1,38 @@
+﻿@using AspNetGame.Models.Game.Base
+@using AspNetGame.Models.Game.Units
+@model AspNetGame.Models.Game.Units.UnitTemplate
+
+@{
+    bool isExtractor = AbilitiesHelper.IsExtractor(Model);
+}
+
+<div class="panel @(isExtractor ? "panel-primary" : "panel-default strikeout")">
+    <div class="panel-heading">
+        <h3 class="panel-title">Extractor</h3>
+    </div>
+    @{
+        if (isExtractor)
+        {
+    <div class="panel-body">
+        <p><em>A unit that can extract resources.</em></p>
+
+        <table class="table specs">
+            <tr>
+                <td>Extracted resource</td>
+                <td>@Model.ExtractedResource.Name</td>
+            </tr>
+            <tr>
+                <td>Extraction capacity</td>
+                <td>@Model.ExtractionCapacity</td>
+            </tr>
+        </table>
+        
+        <sub>
+            Each unit can only extract one type of resource.
+            Extraction capacity represents the amount of resource that the extractor
+            produces in an hour.
+        </sub>
+    </div>
+        }
+    }
+</div>

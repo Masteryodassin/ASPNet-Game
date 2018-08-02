@@ -1,0 +1,42 @@
+﻿@using AspNetGame.Models.Game.Base
+@using AspNetGame.Models.Game.Units
+@model AspNetGame.Models.Game.Units.UnitTemplate
+
+@{
+    bool isStorage = AbilitiesHelper.IsStorage(Model);
+}
+
+    <div class="panel @(isStorage ? "panel-primary" : "panel-default strikeout")">
+        <div class="panel-heading">
+            <h3 class="panel-title">Storage</h3>
+        </div>
+        @{
+            if (isStorage)
+            {
+        <div class="panel-body">
+            <p>
+                <em>
+                    A unit that can store resources on a planet. 
+                </em>
+            </p>
+
+            <table class="table specs">
+                <tr>
+                    <td>Stored resource</td>
+                    <td>@Model.StoredResource</td>
+                </tr>
+                <tr>
+                    <td>Storage capacity</td>
+                    <td>@Model.StorageCapacity</td>
+                </tr>
+            </table>
+
+            <sub>
+                Each storage unit
+                can only stores resource one type of resource. Storage capacity
+                represents the maximum amount of resources that can be stored.
+            </sub>
+        </div>
+            }
+        }
+    </div>
