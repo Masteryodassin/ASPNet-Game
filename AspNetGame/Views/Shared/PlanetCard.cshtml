@@ -1,0 +1,11 @@
+﻿@model AspNetGame.Models.Game.Planet
+@{
+    ViewBag.Title = "PlanetCard";
+}
+
+<div>
+    <h4>@Model.Name</h4>
+
+    <img src="@(Model.ImagePath ?? "/Content/Images/noimageavailable.png")" class="planet-card-image" />
+</div>
+

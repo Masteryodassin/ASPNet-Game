@@ -1,0 +1,66 @@
+﻿@model AspNetGame.Models.Game.Units.UnitTemplate
+@{
+    ViewBag.Title = "Create a new unit template";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@using (Html.BeginForm("Create", "UnitTemplate", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-lg-8">
+            <h3>Summary</h3>
+
+            <table class="table specs input-group">
+                <tr>
+                    <td>@Html.LabelFor(m => m.Name)</td>
+                    <td>@Html.TextBoxFor(m => m.Name, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.MaxHealth)</td>
+                    <td>@Html.TextBoxFor(m => m.MaxHealth, new { @type = "number", @min = 0, @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.BuildingDelay)</td>
+                    <td>@Html.TextBoxFor(m => m.BuildingDelay, new { @type = "number", @min = 0, @class = "form-control" })</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-lg-4">
+            <img src="~/Content/Images/noimageavailable.png" class="unit-image" />
+            <a class="btn btn-info">Pickup a file</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4">
+            @Html.Partial("~/Views/UnitTemplate/Fragments/Attacker.cshtml", Model)
+        </div>
+
+        <div class="col-lg-4">
+            @Html.Partial("~/Views/UnitTemplate/Fragments/Mobile.cshtml", Model)
+        </div>
+
+        <div class="col-lg-4">
+            @Html.Partial("~/Views/UnitTemplate/Fragments/Extractor.cshtml", Model)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4">
+            @Html.Partial("~/Views/UnitTemplate/Fragments/Builder.cshtml", Model)
+        </div>
+
+        <div class="col-lg-4">
+            @Html.Partial("~/Views/UnitTemplate/Fragments/Researcher.cshtml", Model)
+        </div>
+
+        <div class="col-lg-4">
+            @Html.Partial("~/Views/UnitTemplate/Fragments/Storage.cshtml", Model)
+        </div>
+    </div>
+
+}

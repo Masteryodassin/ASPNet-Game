@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AspNetGame.Models
 {
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
@@ -50,7 +51,7 @@ namespace AspNetGame.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "UserName")]
+        [Display(Name = "Username")]
 
         public string UserName { get; set; }
 
@@ -65,8 +66,7 @@ namespace AspNetGame.Models
 
     public class RegisterViewModel
     {
-        [Required]
-        [Display(Name = "UserRoles")]
+        [Display(Name = "Roles")]
         public string UserRoles { get; set; }
 
         [Required]
@@ -75,7 +75,7 @@ namespace AspNetGame.Models
         public string Email { get; set; }
 
         [Required]
-        [Display(Name = "UserName")]
+        [Display(Name = "Username")]
         public string UserName { get; set; }
 
         [Required]

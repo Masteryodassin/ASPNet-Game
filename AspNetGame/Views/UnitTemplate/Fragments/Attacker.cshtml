@@ -1,0 +1,55 @@
+﻿@using AspNetGame.Models.Game.Base
+@using AspNetGame.Models.Game.Units
+@model AspNetGame.Models.Game.Units.UnitTemplate
+
+@{
+    bool isAttacker = AbilitiesHelper.IsAttacker(Model);
+}
+
+    <div class="panel @(isAttacker ? "panel-primary" : "panel-default strikeout")">
+        <div class="panel-heading">
+            <h3 class="panel-title @(ViewBag.Editing ? "pull-left" : "")">
+                Attacker
+            </h3>
+
+            @if (ViewBag.Editing)
+            {
+                <button class="btn btn-success btn-xs pull-right"
+                        type="button" click="AddAttack()">
+                    <i class="glyphicon glyphicon-plus"></i>
+                </button>
+                <div class="clearfix"></div>
+            }
+        </div>
+        @{
+            if (isAttacker)
+            {
+        <div class="panel-body">
+            <p>
+                <em>
+                    A unit that can cause damage to others.
+                </em>
+            </p>
+
+            <table class="table specs">
+                <tr>
+                    <td>Attack point</td>
+                    @if (ViewBag.Editing)
+                    {
+                        Html.TextBoxFor(m => m.AttackPoint, new { @type = "number", @min = 0, @class = "form-control" });
+                    }
+                    else
+                    {
+                        <td>@Model.AttackPoint</td>
+                    }
+                </tr>
+            </table>
+
+            <sub>
+                Its amount of
+                attack point will be substracted of the target health at each attack.
+            </sub>
+        </div>
+            }
+        }
+    </div>

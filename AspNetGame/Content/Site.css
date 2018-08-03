@@ -1,12 +1,17 @@
 ﻿body {
+    font-family: 'Open Sans', 'Microsoft Sans Serif', sans-serif;
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url(/Content/Images/background.jpg);
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -14,4 +19,50 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+table.specs tr td:nth-child(2n+1) {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.resource-icon 
+{
+    width: 24px;
+    height: 24px;
+
+}
+
+.resource-icon-g {
+    width: 64px;
+    height: 64px;
+}
+
+.rounded-image {
+    border-radius: 10px;
+    box-shadow: 3px 3px 8px #666;
+}
+
+.unit-image 
+{
+    max-width: 300px;
+    object-fit: contain;
+    object-position: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.strikeout
+{
+    text-decoration: line-through;
+    font-style: italic;
+}
+
+.planet-card-image {
+    max-width: 150px;
+    object-fit: contain;
+    object-position: center;
 }

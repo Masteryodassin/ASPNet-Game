@@ -1,0 +1,21 @@
+﻿@using AspNetGame.Models.Game.Base
+@using AspNetGame.Models.Game.Units
+@model AspNetGame.Models.Game.Units.UnitTemplate
+
+@{
+    bool isResearcher = AbilitiesHelper.IsResearcher(Model);
+}
+
+    <div class="panel @(isResearcher ? "panel-primary" : "panel-default strikeout")">
+        <div class="panel-heading">
+            <h3 class="panel-title">Researcher</h3>
+        </div>
+        @{
+            if (isResearcher)
+            {
+                <div class="panel-body">
+                    <p><em>A unit that can perform research to enhance planets technology.</em></p>
+                </div>
+            }
+        }
+    </div>

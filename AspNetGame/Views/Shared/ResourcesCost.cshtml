@@ -1,0 +1,13 @@
+﻿@model IEnumerable<AspNetGame.Models.Game.Base.Cost>
+
+<ul>
+@foreach (var cost in Model)
+{
+    <li>
+        <img class="resource-icon" src="@(cost.Resource.ImagePath ?? "/Content/Images/empty.png")" />
+        <strong>@cost.Resource.Name</strong>: @cost.Amount
+    </li>
+}
+</ul>
+
+
