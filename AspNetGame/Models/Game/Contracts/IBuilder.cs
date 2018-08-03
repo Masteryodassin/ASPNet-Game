@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace AspNetGame.Models.Game.Contracts
 {
+    /// <summary>
+    /// Represents the ability for a kind of unit to create another units
+    /// </summary>
     public interface IBuilder
     {
         

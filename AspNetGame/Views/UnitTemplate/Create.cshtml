@@ -6,8 +6,9 @@
 <h2>@ViewBag.Title</h2>
 
 
-@using (Html.BeginForm("Action", "ControllerName", FormMethod.Post))
+@using (Html.BeginForm("Create", "UnitTemplate", FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
     <div class="row">
         <div class="col-lg-8">
             <h3>Summary</h3>

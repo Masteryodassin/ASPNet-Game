@@ -10,8 +10,16 @@ namespace AspNetGame.Models.Game.Contracts
 {
     public interface IMobile
     {
-        //void Move(Planet destination);
+        /// <summary>
+        /// Moves the unit to another planet
+        /// </summary>
+        /// <param name="destination">The destination planet</param>
+        void Move(Planet destination);
 
+        /// <summary>
+        /// Indicates whether the unit is currently moving
+        /// </summary>
+        /// <returns></returns>
         bool IsMoving();
     }
 }

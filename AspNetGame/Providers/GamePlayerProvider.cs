@@ -37,11 +37,6 @@ namespace AspNetGame.Providers
                 GameContext.SaveChanges();
             }
 
-            if (player.Planets == null)
-            {
-                player.Planets = new List<Planet>();
-            }
-
             return player;
         }
 

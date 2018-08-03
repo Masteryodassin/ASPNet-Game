@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AspNetGame.Models.Game.Contracts
 {
+    /// <summary>
+    /// Represents the ability of a unit to research technologies
+    /// </summary>
     public interface IResearcher
     {
     }

@@ -1,0 +1,13 @@
+﻿@model IEnumerable<AspNetGame.Models.Game.Planet>
+@{
+    ViewBag.Title = "List of planets";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@foreach (var planet in Model)
+{
+    @Html.Partial("PlanetCard", planet);
+}
+

@@ -10,21 +10,11 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace AspNetGame.Controllers.Game
+namespace AspNetGame.Controllers.Game.Admin
 {
+    [Authorize(Roles = "Admin")]
     public class UnitTemplateController: GameController<UnitTemplate>
     {
         public UnitTemplateController() : base(new UnitTemplateRepository()) { }
-
-        public override async Task<ActionResult> Details(long id)
-        {
-            ViewBag.Editing = false;
-            return await base.Details(id);
-        }
-
-        public void AddAttack()
-        {
-
-        }
     }
 }

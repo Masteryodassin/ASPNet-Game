@@ -235,8 +235,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Game\Core\BaseController.cs" />
     <Compile Include="Controllers\Game\Core\GameController.cs" />
-    <Compile Include="Controllers\Game\ResourceController.cs" />
-    <Compile Include="Controllers\Game\UnitTemplateController.cs" />
+    <Compile Include="Controllers\Game\Admin\ResourceController.cs" />
+    <Compile Include="Controllers\Game\Admin\UnitTemplateController.cs" />
+    <Compile Include="Controllers\Game\PlanetController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
@@ -245,6 +246,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Game\Base\Abilities.cs" />
@@ -263,7 +265,10 @@
     <Compile Include="Models\Game\Player.cs" />
     <Compile Include="Models\Game\Units\UnitTemplate.cs" />
     <Compile Include="Repositories\Core\BaseRepository.cs" />
+    <Compile Include="Repositories\Core\GameRepository.cs" />
     <Compile Include="Repositories\Core\IRepository.cs" />
+    <Compile Include="Repositories\PlanetRepository.cs" />
+    <Compile Include="Repositories\PlayerRepository.cs" />
     <Compile Include="Repositories\ResourceRepository.cs" />
     <Compile Include="Repositories\UnitTemplateRepository.cs" />
     <Compile Include="Services\IoC.cs" />
@@ -370,9 +375,13 @@
     <Content Include="Views\UnitTemplate\Fragments\Researcher.cshtml" />
     <Content Include="Views\UnitTemplate\Fragments\Storage.cshtml" />
     <Content Include="Views\UnitTemplate\Index.cshtml" />
+    <Content Include="Views\Planet\Create.cshtml" />
+    <Content Include="Views\Planet\Index.cshtml" />
+    <Content Include="Views\Shared\PlanetCard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Player\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -21,11 +21,16 @@ namespace AspNetGame.Repositories
 
         Task<TEntity> Find(TId id, params Expression<Func<TEntity, object>>[] includes);
 
+        Task<IEnumerable<TEntity>> FindBy(
+           IDictionary<Expression<Func<TEntity, object>>, object> criteria);
+
         void Insert(TEntity entity);
 
         void BulkInsert(IEnumerable<TEntity> entities);
         void Delete(TId id);
         void Update(TEntity entity);
         Task Save();
+
+        TEntity Attach(TEntity entity);
     }
 }

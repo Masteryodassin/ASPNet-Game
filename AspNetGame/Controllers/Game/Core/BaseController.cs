@@ -32,6 +32,7 @@ namespace AspNetGame.Controllers.Game.Core
 
         public virtual async Task<ActionResult> Details(TId id)
         {
+            ViewBag.Editing = false;
             TEntity entity = await Repository.Find(id);
 
             if (entity == null)
@@ -67,7 +68,7 @@ namespace AspNetGame.Controllers.Game.Core
         {
             ViewBag.Editing = true;
 
-            TEntity entity = (TEntity)Activator.CreateInstance<TEntity>();
+            TEntity entity = Activator.CreateInstance<TEntity>();
             return View(entity);
         }
     }

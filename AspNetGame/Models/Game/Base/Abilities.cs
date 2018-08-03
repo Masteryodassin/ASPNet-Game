@@ -4,6 +4,10 @@ using System;
 
 namespace AspNetGame.Models.Game.Base
 {
+    /// <summary>
+    /// Abilities is a Set of constants that represents the capabilities of a unit template.
+    /// That can be used as flags so it's possible for a unit to cumulate several capabilities.
+    /// </summary>
     [Flags]
     public enum Abilities
     {
@@ -17,8 +21,18 @@ namespace AspNetGame.Models.Game.Base
         All = 63
     }
 
+    /// <summary>
+    /// An helper class that allows to determine whether a unit template support some abilities
+    /// and to get unit casted with the corresponding behavioral interface (see Contracts/)
+    /// </summary>
     public static class AbilitiesHelper
     { 
+        /// <summary>
+        /// To know if flag belongs to the set of flags
+        /// </summary>
+        /// <param name="flags">The set of flags</param>
+        /// <param name="flag">The flag to test</param>
+        /// <returns></returns>
         private static bool IsSet(Abilities flags, Abilities flag) 
         {
             int flagsValue = (int)(object)flags;
@@ -27,30 +41,63 @@ namespace AspNetGame.Models.Game.Base
             return (flagsValue & flagValue) != 0;
         }
 
+        /// <summary>
+        /// Indicated whether current unit template is an attacker
+        /// </summary>
+        /// <param name="unit">The unit template</param>
+        /// <returns></returns>
         public static bool IsAttacker(UnitTemplate unit)
         {
             return IsSet(unit.Abilities, Abilities.Attacker);
         }
+
+        /// <summary>
+        /// Indicated whether current unit template is mobile
+        /// </summary>
+        /// <param name="unit">The unit template</param>
+        /// <returns></returns>
         public static bool IsMobile(UnitTemplate unit)
         {
             return IsSet(unit.Abilities, Abilities.Mobile);
         }
 
+        /// <summary>
+        /// Indicated whether current unit template is a builder
+        /// </summary>
+        /// <param name="unit">The unit template</param>
+        /// <returns></returns>
         public static bool IsBuilder(UnitTemplate unit)
         {
             return IsSet(unit.Abilities, Abilities.Builder);
         }
 
+        /// <summary>
+        /// Indicated whether current unit template is an extractor
+        /// </summary>
+        /// <param name="unit">The unit template</param>
+        /// <returns></returns>
         public static bool IsExtractor(UnitTemplate unit)
         {
             return IsSet(unit.Abilities, Abilities.Extractor);
         }
 
+
+        /// <summary>
+        /// Indicated whether current unit template is a store
+        /// </summary>
+        /// <param name="unit">The unit template</param>
+        /// <returns></returns>
         public static bool IsStorage(UnitTemplate unit)
         {
             return IsSet(unit.Abilities, Abilities.Storage);
         }
 
+
+        /// <summary>
+        /// Indicated whether current unit template is a researcher
+        /// </summary>
+        /// <param name="unit">The unit template</param>
+        /// <returns></returns>
         public static bool IsResearcher(UnitTemplate unit)
         {
             return IsSet(unit.Abilities, Abilities.Researcher);

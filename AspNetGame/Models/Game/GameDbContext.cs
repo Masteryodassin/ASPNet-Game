@@ -10,6 +10,11 @@ using System.Web;
 
 namespace AspNetGame.Models.Game
 {
+    /// <summary>
+    /// The context for the game model. 
+    /// The database is automatically flushed and rebuilt
+    /// if it doesn't exist yet or if the model has changed
+    /// </summary>
     public class GameDbContext: DbContext 
     {
         public GameDbContext() : base("GameConnection")
@@ -19,22 +24,47 @@ namespace AspNetGame.Models.Game
             }
             if (!this.Database.CompatibleWithModel(false))
             {
-                this.Database.Delete();
                 if (this.Database.CreateIfNotExists()) {
                     Seed(this);
                 }
             }
         }
 
+        /// <summary>
+        /// A method called at each creation of the database
+        /// </summary>
+        /// <param name="context"></param>
         private void Seed(GameDbContext context)
         {
         }
 
+        /// <summary>
+        /// Adds properties to model
+        /// </summary>
+        /// <param name="modelBuilder">A builder for the model definition</param>
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            // Adding a concatenated unique index on Player.Username + Player.Nickname
+            modelBuilder.Entity<Player>()
+                .HasIndex(p => new { p.Nickname, p.Username }).IsUnique();
+
+            base.OnModelCreating(modelBuilder);
+        }
+
+        /// <summary>
+        /// Unit templates DbSet
+        /// </summary>
         public System.Data.Entity.DbSet<UnitTemplate> UnitTemplates { get; set; }
 
+        /// <summary>
+        /// Players DbSet
+        /// </summary>
         public System.Data.Entity.DbSet<Player> Players { get; set; }
-
-        //public System.Data.Entity.DbSet<Planet> Planets { get; set; }
+        
+        /// <summary>
+        /// Planets DbSet
+        /// </summary>
+        public System.Data.Entity.DbSet<Planet> Planets { get; set; }
         
     }
 }

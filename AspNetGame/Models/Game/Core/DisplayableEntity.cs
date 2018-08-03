@@ -15,6 +15,9 @@ namespace AspNetGame.Models.Game.Core
     /// <typeparam name="ID">The type of the Primary key</typeparam>
     public abstract class DisplayableEntity<ID> : BaseEntity<long>
     {
+        /// <summary>
+        /// The displayable and friendly name of the entity
+        /// </summary>
         public string Name { get; set; }
         /// <summary>
         /// The image path to display for this entity

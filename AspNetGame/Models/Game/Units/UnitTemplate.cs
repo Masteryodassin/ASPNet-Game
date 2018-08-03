@@ -1,54 +1,97 @@
 ﻿using AspNetGame.Models.Game.Base;
-using AspNetGame.Models.Game.Contracts;
 using AspNetGame.Models.Game.Core;
-using AspNetGame.Models.Game.Base;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace AspNetGame.Models.Game.Units
 {
+    /// <summary>
+    /// Unit template is the representation of a kind of unit that
+    /// can be created and used in the game by player.
+    /// These objects are managed by application admin to define the game model
+    /// before players can play.
+    /// </summary>
     public class UnitTemplate : DisplayableEntity<long>
-    { 
+    {
+        #region General Stats
+
+        /// <summary>
+        /// The abilities of this kind of unit
+        /// </summary>
         public Abilities Abilities { get; set; }
 
-        // IAttacker
-        public long? AttackPoint { get; set; }
-
-        // IMobile
-        public long? Speed { get; set; }
-
-        // IExtractor
-        public Resource ExtractedResource { get; set; }
-
-        public long? ExtractionCapacity { get; set; }
-        
-        // IBuilder
-        public List<UnitTemplate> AvailableBuildings { get; set; }
-
-        public float? BuildingSpeedRatio { get; set; }
-
-        // IStorage
-        public Resource StoredResource { get; set; }
-        
-        public long? StorageCapacity { get; set; }
-
-        // IResearch
-        // ...
-
-        // General stats
+        /// <summary>
+        /// The maximum and nomimal amount of health point for this kind of unit
+        /// </summary>
         [Range(0, long.MaxValue)]
         [DisplayName("Maximum health")]
         public long MaxHealth { get; set; }
 
+        /// <summary>
+        /// The delay in second required by this kind of unit to being built
+        /// </summary>
         [Range(0, long.MaxValue)]
         [DisplayName("Building delay")]
         public long BuildingDelay { get; set; }
 
+        /// <summary>
+        /// The amount of resources required for creating this kind of unit
+        /// </summary>
         [DisplayName("Cost")]
         public virtual List<Cost> ResourceCosts { get; set; }
+        #endregion
+
+        /// <summary>
+        /// The amount of damage cause by this kind of unit
+        /// </summary>
+        public long? AttackPoint { get; set; }
+
+        #region IMobile
+        /// <summary>
+        /// The speed of the mobile unit
+        /// </summary>
+        public long? Speed { get; set; }
+        #endregion
+
+        #region IExtractor
+        /// <summary>
+        /// The type of resource that th eunit can extract.
+        /// </summary>
+        public Resource ExtractedResource { get; set; }
+
+        /// <summary>
+        /// The amount of resource that this kind of unit can produces in a hour.
+        /// </summary>
+        public long? ExtractionCapacity { get; set; }
+        #endregion
+
+        #region IBuilder
+        /// <summary>
+        /// Lists of other kind of units that this can build (if it's a builder)
+        /// </summary>
+        public List<UnitTemplate> AvailableBuildings { get; set; }
+
+        /// <summary>
+        /// A ratio that can speed up the base building time of a building
+        /// </summary>
+        public float? BuildingSpeedRatio { get; set; }
+        #endregion
+
+        #region IStorage
+        /// <summary>
+        ///  The kind of resource that this kind of unit can store
+        /// </summary>
+        public Resource StoredResource { get; set; }
+        
+        /// <summary>
+        /// The amount of resource that can be stored
+        /// </summary>
+        public long? StorageCapacity { get; set; }
+        #endregion
+
+        #region IResearcher
+        // TODO Add specific properties to research able units
+        #endregion
     }
 }

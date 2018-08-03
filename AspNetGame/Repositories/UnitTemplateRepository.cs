@@ -1,5 +1,6 @@
 ﻿using AspNetGame.Models.Game;
 using AspNetGame.Models.Game.Units;
+using AspNetGame.Repositories.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ using System.Web;
 
 namespace AspNetGame.Repositories
 {
-    public class UnitTemplateRepository: BaseRepository<UnitTemplate, long>
+    public class UnitTemplateRepository: GameRepository<UnitTemplate>
     {
-        public UnitTemplateRepository() : base(new GameDbContext()) { }
+        public UnitTemplateRepository() : base() { }
 
         protected override Expression<Func<UnitTemplate, object>>[] DefaultIncludedProperties()
         {
@@ -22,24 +23,5 @@ namespace AspNetGame.Repositories
                 e => e.AvailableBuildings
             };
         }
-
-
-
-        /*protected override string[] DefaultIncludedProperties()
-        {
-            return new string[] {
-                "ExtractedResource", "AvailableBuildings", "StoredResource", "ResourceCosts.Resource"
-            };
-        }*/
-
-        /*public async override Task<IEnumerable<UnitTemplate>> GetAll()
-        {
-            return Context.Set<UnitTemplate>()
-                .Include("ResourceCosts.Resource")
-                .Include("ExtractedResource")
-                .Include("StoredResource")
-                .Include("AvailableBuildings")
-                .AsEnumerable();
-        }*/
     }
 }

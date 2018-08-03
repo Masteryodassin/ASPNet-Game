@@ -60,3 +60,9 @@ ul {
     text-decoration: line-through;
     font-style: italic;
 }
+
+.planet-card-image {
+    max-width: 150px;
+    object-fit: contain;
+    object-position: center;
+}

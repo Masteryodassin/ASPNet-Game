@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -33,16 +34,16 @@ namespace AspNetGame.Models
     {
 
         public ApplicationDbContext()
-            : base("AuthenticationConnection", throwIfV1Schema: false)
+            : base("AuthenticationConnection")
         {
-            if (this.Database.CreateIfNotExists())
+            if (Database.CreateIfNotExists())
             {
                 Seed(this);
             }
-            if (!this.Database.CompatibleWithModel(false))
+            if (!Database.CompatibleWithModel(false))
             {
-                this.Database.Delete();
-                if (this.Database.CreateIfNotExists())
+                Database.Delete();
+                if (Database.CreateIfNotExists())
                 {
                     Seed(this);
                 }
@@ -51,24 +52,36 @@ namespace AspNetGame.Models
 
         private void Seed(ApplicationDbContext context)
         {
-            List<IdentityRole> defaultRoles = new List<IdentityRole>
+            IdentityRole roleAdmin = new IdentityRole() { Name = RoleConstants.Admin };
+            IdentityRole rolePlayer = new IdentityRole() { Name = RoleConstants.Player };
+
+            context.Roles.Add(roleAdmin);
+            context.Roles.Add(rolePlayer);
+
+            ApplicationUser admin = context.Users
+                 .Where(user => user.UserName.Equals("admin"))
+                 .FirstOrDefault();           
+
+            if (admin == null)
             {
-                new IdentityRole() { Name = "Admin" },
-                new IdentityRole() { Name = "Employee" },
-                new IdentityRole() { Name = "Manager" }
-            };
+                // admin - Admin123#
+                admin = new ApplicationUser()
+                {
+                    Email = "admin@galacticgame.org",
+                    EmailConfirmed = false,
+                    PasswordHash = "AI8MPuTYyxre+v0z1VoRAsoD78MrBWJm5h6XyT6/9Vz8gQC4EzMx4tu7/PW8SHy1gg==",
+                    SecurityStamp = "7090227b-8b7a-4139-b427-992666dc2766",
+                    LockoutEnabled = true,
+                    UserName = "admin"
+                };
+                context.Users.Add(admin);
+                context.SaveChanges();
 
-            //INSERT INTO [dbo].[AspNetUsers] ([Id], [Email], [EmailConfirmed], [PasswordHash], [SecurityStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], 
-            //[LockoutEndDateUtc], [LockoutEnabled], [AccessFailedCount], [UserName]) VALUES 
-            //(N'53c5b44c-5208-4319-804b-11bcac7a5aa2', N'fabien.lehouedec@gmail.com', 0, N'AACws3iAjLap/fFWVxHc1/47Fo8p9FOOILqEHo1weeHfRuUkaP1ZKPAL1jQYSca8XQ==',
-            //N'359c4600-4b9e-4588-9556-b107ad06b164', NULL, 0, 0, NULL, 1, 0, N'fabien')
-
-
-           // IdentityUser adminUser = new IdentityUser() { Email = "admin@mywebsite.com", PasswordHash =  }
-
-            foreach (IdentityRole role in defaultRoles)
-            {
-                context.Roles.Add(role);
+                admin.Roles.Add(new IdentityUserRole()
+                {
+                    RoleId = roleAdmin.Id,
+                    UserId = admin.Id
+                });
             }
 
             context.SaveChanges();
@@ -78,5 +91,11 @@ namespace AspNetGame.Models
         {
             return new ApplicationDbContext();
         }
+    }
+
+    public class RoleConstants
+    {
+        public static readonly string Admin = "Admin";
+        public static readonly string Player = "Player";
     }
 }

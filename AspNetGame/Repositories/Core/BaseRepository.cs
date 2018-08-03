@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace AspNetGame.Repositories
+namespace AspNetGame.Repositories.Core
 {
     public class BaseRepository<TEntity, TId> : IRepository<TEntity, TId>
         where TId : struct, IComparable<TId>
@@ -51,17 +51,21 @@ namespace AspNetGame.Repositories
             return await GetAllIncluding(DefaultIncludedProperties());
         }
 
-        /*public virtual async Task<IEnumerable<TEntity>> GetAll(params string[] includedProperties)
+        public async Task<IEnumerable<TEntity>> FindBy(
+            IDictionary<Expression<Func<TEntity, object>>, object> criteria)
         {
-             DbQuery<TEntity> dbQuery = null;
-             DbSet<TEntity> dbSet = Context.Set<TEntity>();
-             foreach (string include in includedProperties)
-             {
-                 dbQuery = dbSet.Include(include);
-             }
+            IQueryable<TEntity> queryable = Context.Set<TEntity>();
 
-             return dbQuery.AsEnumerable();
-        }*/
+            foreach (var prop in criteria.Keys)
+            {
+                var value = criteria[prop];
+                queryable = queryable.Where(
+                    entity => prop.Compile().Invoke(entity).Equals(value));
+            }
+
+            return await queryable.ToListAsync();
+        }
+
         public async Task<IEnumerable<TEntity>> GetAllIncluding(
             params Expression<Func<TEntity, object>>[] includeProperties)
         {
@@ -87,6 +91,7 @@ namespace AspNetGame.Repositories
 
         public virtual void Insert(TEntity entity)
         {
+            Context.Entry(entity).State = EntityState.Added;
             Context.Set<TEntity>().Add(entity);
         }
 
@@ -102,12 +107,18 @@ namespace AspNetGame.Repositories
 
         public virtual void Update(TEntity entity)
         {
+            entity = Attach(entity);
             Context.Entry(entity).State = EntityState.Modified;
         }
 
         public virtual async Task Save()
         {
             await Context.SaveChangesAsync();
+        }
+
+        public virtual TEntity Attach(TEntity entity)
+        {
+            return Context.Set<TEntity>().Attach(entity);
         }
     }
 }
