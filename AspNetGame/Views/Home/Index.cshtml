@@ -1,10 +1,17 @@
 ﻿<div class="jumbotron">
-    <h1>Galaxy Game</h1>
-    <p class="lead">Galaxy Game is an open source, easy-to-use, galactic simulation game.</p>
+    <div class="home-logo">
+        <img src="~/Content/Images/logo.png" alt="logo" />
+        <div>
+            <h1>Galaxy Game</h1>
+            <p class="lead">Galaxy Game is an open source, easy-to-use, galactic simulation game.</p>
+        </div>
+    </div>
 </div>
+
 <div class="row">
     <div class="col-md-12">
         <h2>Join us</h2>
         <p>@ViewBag.PlayersCount players has joined the move. It's now your turn.</p>
+        @Html.ActionLink("Join us", "Register", "Account", null, new { @class = "btn btn-primary" })
     </div>
 </div>

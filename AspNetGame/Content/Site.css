@@ -66,3 +66,20 @@ ul {
     object-fit: contain;
     object-position: center;
 }
+
+.home-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.home-logo img {
+    margin-right: 20px;
+    width: 128px; 
+}
+
+.header-logo {
+    width: 24px;
+    display: inline !important;
+    margin-right: 5px;
+}

@@ -288,6 +288,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\background.jpg" />
     <Content Include="Content\Images\empty.png" />
+    <Content Include="Content\Images\logo-white.png" />
+    <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\noimageavailable.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

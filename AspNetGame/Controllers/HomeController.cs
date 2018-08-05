@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AspNetGame.Models.Game;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,22 +9,14 @@ namespace AspNetGame.Controllers
 {
 	public class HomeController : Controller
 	{
+        private GameDbContext Context { get; set; }
+        public HomeController(): base()
+        {
+            Context = IoC.Resolve<GameDbContext>();
+        }
 		public ActionResult Index()
 		{
-			return View();
-		}
-
-		public ActionResult About()
-		{
-			ViewBag.Message = "Your application description page.";
-
-			return View();
-		}
-
-		public ActionResult Contact()
-		{
-			ViewBag.Message = "Your contact page.";
-
+            ViewBag.PlayersCount = Context.Players.Count();
 			return View();
 		}
 	}
