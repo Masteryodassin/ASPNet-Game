@@ -2,12 +2,12 @@
 @{
     ViewBag.Title = "List of planets";
 }
-
 <h2>@ViewBag.Title</h2>
-
 
 @foreach (var planet in Model)
 {
     @Html.Partial("PlanetCard", planet);
-}
 
+    @Html.ActionLink("Create a new building", "Index", "Building", new {Id = planet.Id }, new { @class = "btn btn-success" })
+
+}

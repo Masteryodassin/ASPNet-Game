@@ -1,4 +1,5 @@
 ﻿using AspNetGame.Models.Game.Core;
+using AspNetGame.Models.Game.Units;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,5 +25,11 @@ namespace AspNetGame.Models.Game
         // Base resources stock
 
         // Building list
+
+            /// <summary>
+            /// List of Unit types built on this planet
+            /// </summary>
+        public List<UnitTemplate> Units { get; set; }
+
     }
 }

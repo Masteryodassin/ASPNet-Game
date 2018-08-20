@@ -1,0 +1,12 @@
+﻿@model AspNetGame.Models.Game.Units.UnitTemplate
+@{
+    ViewBag.Title = "BuildingTypeCard";
+}
+
+<div>
+    <h4>@Model.Name</h4>
+
+    <img src=" @(Model.ImagePath ?? "/Content/Images/noimageavailable.png") " class="building-card-image" width="100px" />
+    
+</div>
+

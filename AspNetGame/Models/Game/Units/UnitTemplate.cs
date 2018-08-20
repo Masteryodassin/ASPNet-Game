@@ -93,5 +93,15 @@ namespace AspNetGame.Models.Game.Units
         #region IResearcher
         // TODO Add specific properties to research able units
         #endregion
+        
+        /// <summary>
+        /// List of planet where this unit Template is built
+        /// </summary>
+        public List<Planet> Planets { get; set; }
+
+        /// <summary>
+        /// Boolean setting the activity of the current UnitTemplate
+        /// </summary>
+        public bool isActive { get; set; }
     }
 }
