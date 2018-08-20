@@ -8,7 +8,7 @@ namespace AspNetGame.Models.Game.Base
     /// Represents a cost in resource to build/develop units/technologies.
     /// A cost is the association of a type of resource and of an amount
     /// </summary>
-    public class Cost: BaseEntity<long>
+    public class ResourceAmount: BaseEntity<long>
     {
         /// <summary>
         /// The type of resource

@@ -261,8 +261,15 @@
     <Compile Include="Models\Game\Core\BaseEntity.cs" />
     <Compile Include="Models\Game\Core\DisplayableEntity.cs" />
     <Compile Include="Models\Game\GameDbContext.cs" />
+    <Compile Include="Models\Game\Param.cs" />
     <Compile Include="Models\Game\Planet.cs" />
     <Compile Include="Models\Game\Player.cs" />
+    <Compile Include="Models\Game\Timeloop\GameTickableProvider.cs" />
+    <Compile Include="Models\Game\Timeloop\ITickable.cs" />
+    <Compile Include="Models\Game\Timeloop\ITickableProvider.cs" />
+    <Compile Include="Models\Game\Timeloop\ITimeloopService.cs" />
+    <Compile Include="Models\Game\Timeloop\TimeloopService.cs" />
+    <Compile Include="Models\Game\Timeloop\TimeloopThread.cs" />
     <Compile Include="Models\Game\Units\UnitTemplate.cs" />
     <Compile Include="Repositories\Core\BaseRepository.cs" />
     <Compile Include="Repositories\Core\GameRepository.cs" />

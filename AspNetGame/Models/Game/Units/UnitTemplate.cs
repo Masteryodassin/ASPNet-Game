@@ -39,7 +39,7 @@ namespace AspNetGame.Models.Game.Units
         /// The amount of resources required for creating this kind of unit
         /// </summary>
         [DisplayName("Cost")]
-        public virtual List<Cost> ResourceCosts { get; set; }
+        public virtual List<ResourceAmount> ResourceCosts { get; set; }
         #endregion
 
         /// <summary>

@@ -1,4 +1,6 @@
-﻿using AspNetGame.Models.Game.Core;
+﻿using AspNetGame.Models.Game.Base;
+using AspNetGame.Models.Game.Core;
+using AspNetGame.Models.Game.Timeloop;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,7 +14,7 @@ namespace AspNetGame.Models.Game
     /// Represents a player in the game. Player is only available
     /// in the GameDbContext, and makes the association with the IdentityUser.
     /// </summary>
-    public class Player : DisplayableEntity<long>
+    public class Player : DisplayableEntity<long>, ITickable
     {
         /// <summary>
         /// The username of the IdentityUser used to log in the application
@@ -25,7 +27,20 @@ namespace AspNetGame.Models.Game
         /// </summary>
         [MaxLength(256)]
         public string Nickname { get; set; }
+
+        public virtual List<ResourceAmount> Resources { get; set; }
+
+        public void Tick(long count)
+        {
+            if (Name != "admin")
+            {
+                System.Diagnostics.Debug.WriteLine("Le joueur " + Nickname + " gagne " + count + "X des resources");
+            }
+            
+        }
     }
+
+
 
     /// <summary>
     /// A Model for creating a new planet for newer users.

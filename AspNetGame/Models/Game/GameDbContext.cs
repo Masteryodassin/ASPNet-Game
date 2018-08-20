@@ -24,6 +24,7 @@ namespace AspNetGame.Models.Game
             }
             if (!this.Database.CompatibleWithModel(false))
             {
+                Database.Delete();
                 if (this.Database.CreateIfNotExists()) {
                     Seed(this);
                 }
@@ -65,6 +66,11 @@ namespace AspNetGame.Models.Game
         /// Planets DbSet
         /// </summary>
         public System.Data.Entity.DbSet<Planet> Planets { get; set; }
-        
+
+        /// <summary>
+        /// Params DbSet
+        /// </summary>
+        public System.Data.Entity.DbSet<Param> Params { get; set; }
+
     }
 }

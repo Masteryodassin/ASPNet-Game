@@ -1,5 +1,6 @@
 ﻿using AspNetGame.Models;
 using AspNetGame.Models.Game;
+using AspNetGame.Models.Game.Timeloop;
 using AspNetGame.Providers;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,13 @@ namespace AspNetGame
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             Initialize_Context();
-            
+
+
+        }
+
+        protected void Application_End()
+        {
+            IoC.Resolve<TimeloopService>().Pause();
         }
 
         protected void Initialize_Context()
@@ -34,6 +41,12 @@ namespace AspNetGame
                 provider.AppContext = IoC.Resolve<ApplicationDbContext>();
                 provider.GameContext = IoC.Resolve<GameDbContext>();
             });
+
+
+
+            IoC.Register(new TimeloopService(new GameTickableProvider()), p => p.Resume());
         }
+
+
     }
 }
