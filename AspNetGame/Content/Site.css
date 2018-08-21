@@ -38,6 +38,7 @@ table.specs tr td:nth-child(2n+1) {
     height: 64px;
 }
 
+
 .rounded-image {
     border-radius: 10px;
     box-shadow: 3px 3px 8px #666;
@@ -83,3 +84,40 @@ ul {
     display: inline !important;
     margin-right: 5px;
 }
+
+.resources-bar {
+    /*background-color: rgba(0, 0, 0, 0.7);*/
+    position: fixed;
+    left: 0;
+    top: 50px;
+    list-style-type: none;
+
+}
+
+.resources-bar li {
+   /* float: left;*/
+}
+
+.resource-bar-icons {
+    position: relative;
+    text-align: center;
+    color: white;
+    margin: 10px 0 0 10px;
+}
+.resource-bar-icons img {
+    width: 48px;
+    height: 48px;
+    border-radius: 7px;
+}
+
+    .resource-bar-icons div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /*background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 2px;*/
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        font-size: 14pt;
+        font-weight: bold;
+    }

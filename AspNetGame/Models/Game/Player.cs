@@ -34,9 +34,9 @@ namespace AspNetGame.Models.Game
         {
             if (Name != "admin")
             {
-                System.Diagnostics.Debug.WriteLine("Le joueur " + Nickname + " gagne " + count + "X des resources");
+
             }
-            
+
         }
     }
 

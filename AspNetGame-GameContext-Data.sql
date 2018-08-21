@@ -9,7 +9,7 @@ INSERT INTO [dbo].[UnitTemplates] ([Id], [Abilities], [AttackPoint], [Speed], [E
 INSERT INTO [dbo].[UnitTemplates] ([Id], [Abilities], [AttackPoint], [Speed], [ExtractionCapacity], [BuildingSpeedRatio], [StorageCapacity], [MaxHealth], [BuildingDelay], [Name], [ImagePath], [UnitTemplate_Id], [ExtractedResource_Id], [StoredResource_Id], [isActive]) VALUES (2, 3, 15, 100, NULL, NULL, NULL, 1800, 240, N'Striker', N'https://wallpapersite.com/images/pages/pic_w/7078.jpg', NULL, NULL, NULL, 1)
 SET IDENTITY_INSERT [dbo].[UnitTemplates] OFF
 
-SET IDENTITY_INSERT [dbo].[Costs] ON
-INSERT INTO [dbo].[Costs] ([Id], [Amount], [Resource_Id], [UnitTemplate_Id]) VALUES (1, 1500, 3, 1)
-INSERT INTO [dbo].[Costs] ([Id], [Amount], [Resource_Id], [UnitTemplate_Id]) VALUES (3, 800, 1, 1)
-SET IDENTITY_INSERT [dbo].[Costs] OFF
+SET IDENTITY_INSERT [dbo].[ResourceAmounts] ON
+INSERT INTO [dbo].[ResourceAmounts] ([Id], [Amount], [Resource_Id], [UnitTemplate_Id]) VALUES (1, 1500, 3, 1)
+INSERT INTO [dbo].[ResourceAmounts] ([Id], [Amount], [Resource_Id], [UnitTemplate_Id]) VALUES (3, 800, 1, 1)
+SET IDENTITY_INSERT [dbo].[ResourceAmounts] OFF

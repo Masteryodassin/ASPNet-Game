@@ -1,0 +1,36 @@
+﻿@model AspNetGame.Models.Game.ViewModels.ResourcesViewModel
+@using AspNetGame.Models.Game.ViewModels
+
+<script type="text/javascript">
+
+    let resources = @Html.Raw(Json.Encode(Model.ResourceAmounts));
+
+    window.addEventListener('load', (ev) => {
+        setInterval(() => {
+            resources.forEach(updateAmount)
+        }, @Model.TickSize * 1000);
+    });
+
+    function updateAmount(resource) {
+        resource.Amount += resource.GainPerTick;
+        document.getElementById('res-' + resource.Id).innerHTML = resource.Amount;
+
+    }
+
+</script>
+
+<div class="sticky">
+    <ul class="resources-bar">
+        @foreach (ResourceViewModel resource in Model.ResourceAmounts)
+        {
+            <li>
+                <div class="resource-bar-icons" title="@resource.Resource.Name">
+                    <img src="@resource.Resource.ImagePath" />
+                    <div id="res-@resource.Id">@resource.Amount</div>
+                </div>
+                 
+            </li>
+        }
+    </ul>
+</div>
+

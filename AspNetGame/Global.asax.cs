@@ -35,15 +35,6 @@ namespace AspNetGame
 
         protected void Initialize_Context()
         {
-
-            IoC.Register(new GamePlayerProvider(), (provider) =>
-            {
-                provider.AppContext = IoC.Resolve<ApplicationDbContext>();
-                provider.GameContext = IoC.Resolve<GameDbContext>();
-            });
-
-
-
             IoC.Register(new TimeloopService(new GameTickableProvider()), p => p.Resume());
         }
 

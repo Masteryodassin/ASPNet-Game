@@ -19,6 +19,7 @@ namespace AspNetGame.Models.Game
     {
         public GameDbContext() : base("GameConnection")
         {
+            //Database.Delete();
             if (this.Database.CreateIfNotExists()) {
                 Seed(this);
             }

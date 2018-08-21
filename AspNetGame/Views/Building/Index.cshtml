@@ -1,18 +1,18 @@
 ﻿@model IEnumerable<AspNetGame.Models.Game.Units.UnitTemplate>
+@using AspNetGame.Models.Game.ViewModels;
 @{
     ViewBag.Title = "List of Building Types";
+    ResourcesViewModel resourcesVM = ResourcesViewModel.Build(ViewBag.Player);
 }
 <h2>@ViewBag.Title</h2>
 
 <div class="row">
     @foreach (var UnitTemplate in Model)
     {
-
-
         <div class="col-lg-3">
             @Html.Partial("BuildingTypeCard", UnitTemplate)
         </div>
-
-
     }
 </div>
+
+@Html.Partial("ResourcesCounters", resourcesVM)

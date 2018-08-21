@@ -64,7 +64,7 @@ namespace AspNetGame.Controllers.Game.Core
             return View(entity);
         }
 
-        public virtual ActionResult Create()
+        public virtual async Task<ActionResult> Create()
         {
             ViewBag.Editing = true;
 

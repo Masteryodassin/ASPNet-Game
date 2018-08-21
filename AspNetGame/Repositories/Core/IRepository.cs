@@ -21,8 +21,10 @@ namespace AspNetGame.Repositories
 
         Task<TEntity> Find(TId id, params Expression<Func<TEntity, object>>[] includes);
 
-        Task<IEnumerable<TEntity>> FindBy(
-           IDictionary<Expression<Func<TEntity, object>>, object> criteria);
+        /*IEnumerable<TEntity> FindBy(
+            params Tuple<Expression<Func<TEntity, object>>, object>[] criterion);*/
+
+        Task<TEntity> Find(Predicate<TEntity> predicate);
 
         void Insert(TEntity entity);
 

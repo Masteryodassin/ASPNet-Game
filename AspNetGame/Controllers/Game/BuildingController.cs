@@ -23,7 +23,7 @@ namespace AspNetGame.Controllers.Game
 
         // GET: Building
         
-          private async Task<IEnumerable<UnitTemplate>> GetPlanetBuilding(int Id)
+        private async Task<IEnumerable<UnitTemplate>> GetPlanetBuilding(int Id)
         {
             return (await Repository.GetAllIncluding(u => u.isActive & u.Planets.Exists(p => p.Id == Id))).ToList();
         }

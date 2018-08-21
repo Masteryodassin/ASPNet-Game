@@ -272,6 +272,7 @@
     <Compile Include="Models\Game\Timeloop\TimeloopService.cs" />
     <Compile Include="Models\Game\Timeloop\TimeloopThread.cs" />
     <Compile Include="Models\Game\Units\UnitTemplate.cs" />
+    <Compile Include="Models\Game\ViewModels\ResourcesModel.cs" />
     <Compile Include="Repositories\Core\BaseRepository.cs" />
     <Compile Include="Repositories\Core\GameRepository.cs" />
     <Compile Include="Repositories\Core\IRepository.cs" />
@@ -436,6 +437,7 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\ResourcesCounters.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -11,7 +11,7 @@ namespace AspNetGame.Models.Game.Timeloop
 {
     public class TimeloopService : ITimeloopService
     {
-        static readonly long TICK_SIZE = 5;
+        public static readonly long TICK_SIZE = 5;
 
         private GameDbContext Context = IoC.Resolve<GameDbContext>();
         private PlayerRepository PlayerRepository = IoC.Resolve<PlayerRepository>();

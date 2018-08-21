@@ -51,21 +51,6 @@ namespace AspNetGame.Repositories.Core
             return await GetAllIncluding(DefaultIncludedProperties());
         }
 
-        public async Task<IEnumerable<TEntity>> FindBy(
-            IDictionary<Expression<Func<TEntity, object>>, object> criteria)
-        {
-            IQueryable<TEntity> queryable = Context.Set<TEntity>();
-
-            foreach (var prop in criteria.Keys)
-            {
-                var value = criteria[prop];
-                queryable = queryable.Where(
-                    entity => prop.Compile().Invoke(entity).Equals(value));
-            }
-
-            return await queryable.ToListAsync();
-        }
-
         public async Task<IEnumerable<TEntity>> GetAllIncluding(
             params Expression<Func<TEntity, object>>[] includeProperties)
         {
@@ -87,6 +72,12 @@ namespace AspNetGame.Repositories.Core
         public virtual async Task<TEntity> Find(TId id, params Expression<Func<TEntity, object>>[] includes)
         {
             return (await GetAllIncluding(includes)).SingleOrDefault(e => e.Id.Equals(id));
+        }
+
+        public async Task<TEntity> Find(Predicate<TEntity> predicate)
+        {
+            bool pred(TEntity e) => predicate.Invoke(e);
+            return (await GetAll()).SingleOrDefault(pred);
         }
 
         public virtual void Insert(TEntity entity)
@@ -120,5 +111,7 @@ namespace AspNetGame.Repositories.Core
         {
             return Context.Set<TEntity>().Attach(entity);
         }
+
+
     }
 }

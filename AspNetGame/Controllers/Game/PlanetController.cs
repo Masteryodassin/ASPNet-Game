@@ -13,17 +13,18 @@ namespace AspNetGame.Controllers.Game
     [Authorize(Roles = "Player")]
     public class PlanetController : GameController<Planet>
     {
-        private readonly PlayerRepository _players;
+        private readonly PlayerRepository PlayersRepo;
 
         public PlanetController() : base(new PlanetRepository())
         {
-            _players = IoC.Resolve<PlayerRepository>();
+            PlayersRepo = IoC.Resolve<PlayerRepository>();
         }
 
         private async Task<IEnumerable<Planet>> GetPlayerPlanets()
         {
+            var playerId = (await GetPlayer()).Id;
             return (await Repository.GetAllIncluding(p => p.Player))
-                .Where(p => p.Player.Id == Player.Id)
+                .Where(p => p.Player.Id == playerId)
                 .ToList();
         }
 
@@ -41,11 +42,14 @@ namespace AspNetGame.Controllers.Game
 
         private async Task<Player> UpdatePlayer(string nickname)
         {
-            Player.Nickname = nickname;
-            _players.Update(Player);
-            await _players.Save();
+            var username = (await GetPlayer()).Username;
+            var player = await PlayersRepo.Find(p => p.Username.Equals(username));
+                        
+            player.Nickname = nickname;
+            PlayersRepo.Update(player);
+            await PlayersRepo.Save();
 
-            return _players.Attach(Player);
+            return player;
         }
 
         public override async Task<ActionResult> Index()
@@ -64,7 +68,7 @@ namespace AspNetGame.Controllers.Game
             }
         }
 
-        public override ActionResult Create()
+        public override async Task<ActionResult> Create()
         {
             return View(new NewPlanetModel());
         }

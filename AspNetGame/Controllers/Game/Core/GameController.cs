@@ -17,50 +17,49 @@ namespace AspNetGame.Controllers.Game.Core
     public abstract class GameController<TEntity> : BaseController<TEntity, long>
         where TEntity: BaseEntity<long>, new()
     {
-        private GamePlayerProvider _provider;
+        private GamePlayerProvider provider;
 
         public GameController(IRepository<TEntity, long> repository) : 
             base(repository)
         {
-            _provider = IoC.Resolve<GamePlayerProvider>();
+            provider = IoC.Resolve<GamePlayerProvider>();
         }
 
-        protected Player Player
+        protected async Task<Player> GetPlayer()
         {
-            get
+            if (User != null)
             {
-                if (User != null)
-                {
-                    return _provider.GetPlayer(User);
-                }
-                else
-                {
-                    throw new Exception("Could not resolve the current player.");
-                }
+                return await provider.GetPlayer(User);
+            }
+            else
+            {
+                throw new Exception("Could not resolve the current player.");
             }
         }
 
+
+
         public override async Task<ActionResult> Create([Bind] TEntity entity)
         {
-            ViewBag.Player = Player;
+            ViewBag.Player = await GetPlayer();
             return await base.Create(entity);
         }
 
-        public override ActionResult Create()
+        public override async Task<ActionResult> Create()
         {
-            ViewBag.Player = Player;
-            return base.Create();
+            ViewBag.Player = await GetPlayer();
+            return await base.Create();
         }
 
         public async override Task<ActionResult> Details(long id)
         {
-            ViewBag.Player = Player;
+            ViewBag.Player = await GetPlayer();
             return await base.Details(id);
         }
 
         public async override Task<ActionResult> Index()
         {
-            ViewBag.Player = Player;
+            ViewBag.Player = await GetPlayer();
             return await base.Index();
         }
     }
