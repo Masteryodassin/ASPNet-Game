@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
+
 namespace AspNetGame.Controllers.Game
 {
     [Authorize(Roles = "Player")]
@@ -16,6 +17,7 @@ namespace AspNetGame.Controllers.Game
     {
         private readonly PlayerRepository PlayersRepo;
         private readonly UnitTemplateRepository UnitTemplateRepo;
+        private readonly GameDbContext db = new GameDbContext();
 
         public PlanetController() : base(new PlanetRepository())
         {
@@ -42,6 +44,7 @@ namespace AspNetGame.Controllers.Game
             Repository.Insert(planet);
             await Repository.Save();
         }
+
 
         private async Task<Player> UpdatePlayer(string nickname)
         {
@@ -128,6 +131,34 @@ namespace AspNetGame.Controllers.Game
 
             ViewBag.templateNumber = templateNumber;
             return View(planet);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateBuilding(long Id, long BuildingId)
+        {
+            Planet planet = await (db.Planets.FindAsync(Id));
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                    UnitTemplate building = db.UnitTemplates.FirstOrDefault(u => u.Id == BuildingId);
+                    db.UnitTemplates.Attach(building);
+                    planet.Units.Add(building);
+
+                    db.Planets.Attach(planet);
+                    db.Entry<Planet>(planet).State = System.Data.Entity.EntityState.Modified;
+                    await db.SaveChangesAsync();  
+                  
+                }
+            }
+            catch (DataException)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+           
+            return RedirectToAction("Details");
         }
 
     }

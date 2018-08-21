@@ -12,6 +12,7 @@ namespace AspNetGame.Models.Game
     /// </summary>
     public class Planet : DisplayableEntity<long>
     {
+
         /// <summary>
         /// The player that owns the planet
         /// </summary>
@@ -30,6 +31,12 @@ namespace AspNetGame.Models.Game
             /// List of Unit types built on this planet
             /// </summary>
         public List<UnitTemplate> Units { get; set; }
+
+
+        public Planet()
+        {
+            this.Units = new List<UnitTemplate>();
+        }
 
     }
 }
