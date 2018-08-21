@@ -1,6 +1,7 @@
 ﻿using AspNetGame.Models.Game.Core;
 using AspNetGame.Models.Game;
 using AspNetGame.Models.Game.Base;
+using AspNetGame.Models.Game.Units;
 
 namespace AspNetGame.Models.Game.Base
 {
@@ -19,5 +20,17 @@ namespace AspNetGame.Models.Game.Base
         /// The required amount
         /// </summary>
         public long Amount { get; set; }
+
+        /// <summary>
+        /// The player who has its resource amount
+        /// </summary>
+        public Player Player { get; set; }
+
+        /// <summary>
+        /// The cost in resource of the unitTemplate
+        /// </summary>
+        public UnitTemplate UnitTemplate { get; set; }
+
+       
     }
 }

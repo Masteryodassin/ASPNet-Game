@@ -127,12 +127,12 @@ namespace AspNetGame.Models.Game.Base
             return (unit as IBuilder);
         }
 
-        public static IExtractor AsExtractor(UnitTemplate unit)
+        public static IAbilities AsExtractor(UnitTemplate unit)
         {
             if (!IsExtractor(unit))
                 throw new InvalidOperationException("This unit is not an extractor");
 
-            return (unit as IExtractor);
+            return (unit as IAbilities);
         }
 
         public static IStorage AsStorage(UnitTemplate unit)

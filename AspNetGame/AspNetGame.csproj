@@ -238,6 +238,7 @@
     <Compile Include="Controllers\Game\Admin\ResourceController.cs" />
     <Compile Include="Controllers\Game\Admin\UnitTemplateController.cs" />
     <Compile Include="Controllers\Game\PlanetController.cs" />
+    <Compile Include="Controllers\Game\ResourceAmountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
@@ -250,8 +251,10 @@
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Game\Base\Abilities.cs" />
-    <Compile Include="Models\Game\Base\Cost.cs" />
+    <Compile Include="Models\Game\Base\ResourceAmount.cs" />
     <Compile Include="Models\Game\Base\Resource.cs" />
+    <Compile Include="Models\Game\Constants.cs" />
+    <Compile Include="Models\Game\Contracts\IAbility.cs" />
     <Compile Include="Models\Game\Contracts\IAttacker.cs" />
     <Compile Include="Models\Game\Contracts\IBuilder.cs" />
     <Compile Include="Models\Game\Contracts\IExtractor.cs" />
@@ -266,10 +269,8 @@
     <Compile Include="Models\Game\Player.cs" />
     <Compile Include="Models\Game\Timeloop\GameTickableProvider.cs" />
     <Compile Include="Models\Game\Timeloop\ITickable.cs" />
-    <Compile Include="Models\Game\Timeloop\ITickableProvider.cs" />
     <Compile Include="Models\Game\Timeloop\ITimeloopService.cs" />
     <Compile Include="Models\Game\Timeloop\TimeloopService.cs" />
-    <Compile Include="Models\Game\Timeloop\TimeloopThread.cs" />
     <Compile Include="Models\Game\Units\Unit.cs" />
     <Compile Include="Models\Game\Units\UnitTemplate.cs" />
     <Compile Include="Models\Game\ViewModels\ResourcesModel.cs" />

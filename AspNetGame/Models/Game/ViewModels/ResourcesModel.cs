@@ -7,7 +7,7 @@ using System.Web;
 
 namespace AspNetGame.Models.Game.ViewModels
 {
-    public class ResourcesViewModel
+    /*public class ResourcesViewModel
     {
         public List<ResourceViewModel> ResourceAmounts { get; set; }
 
@@ -28,7 +28,7 @@ namespace AspNetGame.Models.Game.ViewModels
             return new ResourcesViewModel()
             {
                 ResourceAmounts = resources,
-                TickSize = TimeloopService.TICK_SIZE, 
+                TickSize = Constants.TICK_DELAY, 
             };
         }
 
@@ -42,5 +42,5 @@ namespace AspNetGame.Models.Game.ViewModels
         public Resource Resource { get; set; }
 
         public long Amount { get; set; }
-    }
+    }*/
 }

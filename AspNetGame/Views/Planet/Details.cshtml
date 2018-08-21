@@ -1,14 +1,11 @@
 ﻿@model AspNetGame.Models.Game.Planet
-@using AspNetGame.Models.Game;
-@using AspNetGame.Models.Game.ViewModels;
-@using AspNetGame.Models.Game.Units;
+@using AspNetGame.Models.Game.Units
 @{
     ViewBag.Title = "List of Building Types";
-    ResourcesViewModel resourcesVM = ResourcesViewModel.Build(ViewBag.Player);
 }
 
 <div class="row">
-    @foreach (var Unite in ViewBag.templateNumber)
+    @foreach (var Unite in ViewBag.buildingsCount)
     {
         object unit = Unite.Key;
         UnitTemplate unitTemplate = (UnitTemplate)unit;
@@ -24,7 +21,7 @@
             {
              @Html.AntiForgeryToken()
              @Html.Hidden("Id", @Model.Id)
-             @Html.Hidden("buildingId",@unitTemplate.Id)
+             @Html.Hidden("buildingId", @unitTemplate.Id)
             <input type="submit" class="btn btn btn-primary" value="Create" />
             }
      </div>
@@ -32,4 +29,4 @@
     }
 </div>
 
-@Html.Partial("ResourcesCounters", resourcesVM)
+@Html.Partial("ResourcesCounters", Model.Player.Resources)
