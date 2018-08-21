@@ -1,4 +1,5 @@
 ﻿using AspNetGame.Models.Game.Base;
+using AspNetGame.Models.Game.Contracts;
 using AspNetGame.Models.Game.Core;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ namespace AspNetGame.Models.Game.Units
     /// These objects are managed by application admin to define the game model
     /// before players can play.
     /// </summary>
-    public class UnitTemplate : DisplayableEntity<long>
+    public class UnitTemplate : DisplayableEntity<long>, IAbilities
     {
         #region General Stats
 
@@ -45,13 +46,13 @@ namespace AspNetGame.Models.Game.Units
         /// <summary>
         /// The amount of damage cause by this kind of unit
         /// </summary>
-        public long? AttackPoint { get; set; }
+        public long AttackPoint { get; set; }
 
         #region IMobile
         /// <summary>
         /// The speed of the mobile unit
         /// </summary>
-        public long? Speed { get; set; }
+        public long Speed { get; set; }
         #endregion
 
         #region IExtractor
@@ -63,7 +64,7 @@ namespace AspNetGame.Models.Game.Units
         /// <summary>
         /// The amount of resource that this kind of unit can produces in a hour.
         /// </summary>
-        public long? ExtractionCapacity { get; set; }
+        public long ExtractionCapacity { get; set; }
         #endregion
 
         #region IBuilder
@@ -75,7 +76,7 @@ namespace AspNetGame.Models.Game.Units
         /// <summary>
         /// A ratio that can speed up the base building time of a building
         /// </summary>
-        public float? BuildingSpeedRatio { get; set; }
+        public float BuildingSpeedRatio { get; set; }
         #endregion
 
         #region IStorage
@@ -87,7 +88,7 @@ namespace AspNetGame.Models.Game.Units
         /// <summary>
         /// The amount of resource that can be stored
         /// </summary>
-        public long? StorageCapacity { get; set; }
+        public long StorageCapacity { get; set; }
         #endregion
 
         #region IResearcher
@@ -102,8 +103,12 @@ namespace AspNetGame.Models.Game.Units
         /// <summary>
         /// Boolean setting the activity of the current UnitTemplate
         /// </summary>
-        public bool isActive { get; set; }
+        public bool Active { get; set; }
 
+        public void Attack(UnitTemplate target)
+        {
+            throw new System.NotImplementedException();
+        }
 
         public override bool Equals(object obj)
         {
@@ -113,6 +118,16 @@ namespace AspNetGame.Models.Game.Units
         public override int GetHashCode()
         {
             return (int) Id;
+        }
+
+        public bool IsMoving()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Move(Planet destination)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

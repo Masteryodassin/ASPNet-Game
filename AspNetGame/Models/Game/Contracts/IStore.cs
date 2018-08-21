@@ -15,6 +15,6 @@ namespace AspNetGame.Models.Game.Contracts
     {
         Resource StoredResource { get; set; }
 
-        long StoredAmount { get; set; } 
+        long StorageCapacity { get; set; } 
     }
 }

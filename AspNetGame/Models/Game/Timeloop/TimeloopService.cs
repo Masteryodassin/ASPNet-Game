@@ -11,13 +11,13 @@ namespace AspNetGame.Models.Game.Timeloop
 {
     public class TimeloopService : ITimeloopService
     {
-        public static readonly long TICK_SIZE = 5;
+
 
         private GameDbContext Context = IoC.Resolve<GameDbContext>();
         private PlayerRepository PlayerRepository = IoC.Resolve<PlayerRepository>();
 
         private readonly TimeloopThread thread;
-        private readonly ITickableProvider provider;
+        private readonly GameTickables tickables = IoC.Resolve<GameTickables>();
 
 
         private async Task<Boolean> HasLastTimestamp()
@@ -45,21 +45,18 @@ namespace AspNetGame.Models.Game.Timeloop
             } else
             {
                 param = new Param(ParamKey.TIMESTAMP, GetActualTimestamp());
+                Context.Params.Add(param);
             }
 
-            //Context.Params.Add(param);
             Context.SaveChanges();
         }
 
-        public TimeloopService(): this(new GameTickableProvider())
-        {
-        }
-
-        public TimeloopService(ITickableProvider provider)
+        public TimeloopService()
         {
             thread = new TimeloopThread(this);
-            this.provider = provider;
         }
+
+
         public void Pause()
         {
             WriteLastTimestamp();
@@ -69,13 +66,9 @@ namespace AspNetGame.Models.Game.Timeloop
         {
             if (await HasLastTimestamp())
             {
-                long tickCount = (GetActualTimestamp() - await GetLastTimestamp()) / TICK_SIZE;
+                long tickCount = (GetActualTimestamp() - await GetLastTimestamp()) / Constants.TICK_DELAY;
 
-                foreach (ITickable tickable in await PlayerRepository.GetAll())
-                {
-                    tickable.Tick(tickCount);
-                    WriteLastTimestamp();
-                }
+                tickables.Tick(tickCount);
             }
 
             StartTickThread();
@@ -106,13 +99,10 @@ namespace AspNetGame.Models.Game.Timeloop
             {
                 while (Thread.CurrentThread.IsAlive)
                 {
-                    Thread.Sleep((int)TICK_SIZE * 1000);
+                    Thread.Sleep(Constants.TICK_DELAY * 1000);
 
-                    foreach (var tickable in await service.provider.Provide())
-                    {
-                        tickable.Tick(1);
-                        service.WriteLastTimestamp();
-                    }
+                    service.tickables.Tick(1);
+                    service.WriteLastTimestamp();
                 }
             }
 

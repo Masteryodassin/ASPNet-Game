@@ -13,6 +13,6 @@ namespace AspNetGame.Models.Game.Contracts
     /// </summary>
     public interface IBuilder
     {
-        
+        float BuildingSpeedRatio { get; set; }
     }
 }

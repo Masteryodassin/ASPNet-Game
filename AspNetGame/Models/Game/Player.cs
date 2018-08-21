@@ -1,6 +1,7 @@
 ﻿using AspNetGame.Models.Game.Base;
 using AspNetGame.Models.Game.Core;
 using AspNetGame.Models.Game.Timeloop;
+using AspNetGame.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -30,11 +31,17 @@ namespace AspNetGame.Models.Game
 
         public virtual List<ResourceAmount> Resources { get; set; }
 
-        public void Tick(long count)
+        public async void Tick(long count)
         {
             if (Name != "admin")
             {
-
+                var PlayerRepository = IoC.Resolve<PlayerRepository>();
+                foreach (var amount in Resources)
+                {
+                    amount.Amount += count * (Constants.BASE_PRODUCTION_DELAY +
+                        (await PlayerRepository.GetProductionCapacity(this, amount.Resource.Id)));
+                    
+                }
             }
 
         }

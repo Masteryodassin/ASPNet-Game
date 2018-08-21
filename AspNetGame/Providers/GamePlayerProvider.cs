@@ -35,7 +35,7 @@ namespace AspNetGame.Providers
             {
                 player = new Player() { Name = username, Username = username };
                 PlayerRepository.Insert(player);
-                PlayerRepository.Save();
+                await PlayerRepository.Save();
             }
 
             return player;

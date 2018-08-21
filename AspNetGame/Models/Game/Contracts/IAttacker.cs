@@ -18,5 +18,8 @@ namespace AspNetGame.Models.Game.Contracts
         /// </summary>
         /// <param name="target">The unit to attack</param>
         void Attack(UnitTemplate target);
+
+
+        long AttackPoint { get; set; }
     }
 }

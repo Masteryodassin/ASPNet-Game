@@ -35,7 +35,7 @@ namespace AspNetGame
 
         protected void Initialize_Context()
         {
-            IoC.Register(new TimeloopService(new GameTickableProvider()), p => p.Resume());
+            IoC.Register(new TimeloopService(), p => p.Resume());
         }
 
 
