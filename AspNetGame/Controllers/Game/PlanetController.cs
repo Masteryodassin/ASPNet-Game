@@ -158,7 +158,7 @@ namespace AspNetGame.Controllers.Game
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
            
-            return RedirectToAction("Details");
+            return RedirectToAction("Index");
         }
 
     }
