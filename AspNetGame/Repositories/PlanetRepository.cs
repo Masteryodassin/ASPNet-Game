@@ -38,16 +38,7 @@ namespace AspNetGame.Repositories
 
             foreach (UnitTemplate unitTemplate in await GetActiveUnitTemplates())
             {
-                buildingsCount.Add(unitTemplate, 0);
-            }
-
-            foreach (UnitTemplate unitTemplate in planet.Units)
-            {
-                if ((await GetActiveUnitTemplates()).Contains(unitTemplate))
-                {
-                    var count = buildingsCount[unitTemplate];
-                    buildingsCount[unitTemplate] = ++count;
-                }
+                buildingsCount.Add(unitTemplate, planet.Units.Count(u => u.UnitTemplateId == unitTemplate.Id));
             }
 
             return buildingsCount;

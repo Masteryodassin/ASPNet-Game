@@ -271,6 +271,7 @@
     <Compile Include="Models\Game\Timeloop\ITickable.cs" />
     <Compile Include="Models\Game\Timeloop\ITimeloopService.cs" />
     <Compile Include="Models\Game\Timeloop\TimeloopService.cs" />
+    <Compile Include="Models\Game\Units\Unit.cs" />
     <Compile Include="Models\Game\Units\UnitTemplate.cs" />
     <Compile Include="Models\Game\ViewModels\ResourcesModel.cs" />
     <Compile Include="Repositories\Core\BaseRepository.cs" />
@@ -279,6 +280,7 @@
     <Compile Include="Repositories\PlanetRepository.cs" />
     <Compile Include="Repositories\PlayerRepository.cs" />
     <Compile Include="Repositories\ResourceRepository.cs" />
+    <Compile Include="Repositories\UnitRepository.cs" />
     <Compile Include="Repositories\UnitTemplateRepository.cs" />
     <Compile Include="Services\IoC.cs" />
     <Compile Include="Models\IdentityModels.cs" />

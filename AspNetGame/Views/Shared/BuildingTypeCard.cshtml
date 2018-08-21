@@ -3,12 +3,9 @@
     ViewBag.Title = "BuildingTypeCard";
 }
 
-<div>
-    <h4>@Model.Name</h4>
-
-
-    <img src=" @(Model.ImagePath ?? "/Content/Images/noimageavailable.png") " class="building-card-image unit-image"  />
-    <button>Create</button>
-    
-</div>
-
+    <div >
+        <h4>@Model.Name</h4>
+        <div class="col-lg-3" style=" align-content : center" >
+            <img src=" @(Model.ImagePath ?? "/Content/Images/noimageavailable.png") " class="building-card-image unit-image" />       
+        </div>
+    </div>

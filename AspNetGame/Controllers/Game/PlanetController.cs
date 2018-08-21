@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
+
 namespace AspNetGame.Controllers.Game
 {
     [Authorize(Roles = "Player")]
@@ -18,6 +19,9 @@ namespace AspNetGame.Controllers.Game
     {
         private readonly PlayerRepository PlayersRepo;
         private readonly PlanetRepository PlanetsRepo;
+        private readonly UnitTemplateRepository UnitTemplateRepo;
+        private readonly GameDbContext db = new GameDbContext();
+
 
         public PlanetController() : base(new PlanetRepository())
         {
@@ -45,6 +49,7 @@ namespace AspNetGame.Controllers.Game
             await Repository.Save();
         }
 
+
         private async Task<Player> UpdatePlayer(string nickname)
         {
             var context = PlayersRepo.Context as GameDbContext;
@@ -53,7 +58,7 @@ namespace AspNetGame.Controllers.Game
   
             player.Nickname = nickname;
 
-           /* foreach (var resource in context.Resource.ToList())
+            foreach (var resource in context.Resource.ToList())
             {
                 context.ResourceAmount.Add(new ResourceAmount()
                 {
@@ -61,7 +66,7 @@ namespace AspNetGame.Controllers.Game
                     Player = player,
                     Amount = 0
                 });
-            }*/
+            }
 
             await context.SaveChangesAsync();
 
@@ -125,6 +130,36 @@ namespace AspNetGame.Controllers.Game
 
             ViewBag.buildingsCount = await PlanetsRepo.GetBuildingsCount(planet);
             return View(planet);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateBuilding(long Id, long BuildingId)
+        {
+            Planet planet = await (db.Planets.FindAsync(Id));
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                    Unit building = new Unit()
+                    {
+                        PlanetId = planet.Id,
+                        UnitTemplateId = db.UnitTemplates.FirstOrDefault(u => u.Id == BuildingId).Id,
+                    };
+
+                    db.Units.Add(building);
+                    await db.SaveChangesAsync();
+       
+                  
+                }
+            }
+            catch (DataException)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+           
+            return RedirectToAction("Details", new { planet.Id });
         }
 
     }

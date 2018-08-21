@@ -98,7 +98,7 @@ namespace AspNetGame.Models.Game.Units
         /// <summary>
         /// List of planet where this unit Template is built
         /// </summary>
-        public List<Planet> Planets { get; set; }
+        public List<Unit> Units { get; set; }
 
         /// <summary>
         /// Boolean setting the activity of the current UnitTemplate
