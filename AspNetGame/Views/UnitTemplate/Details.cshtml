@@ -1,0 +1,66 @@
+﻿@using AspNetGame.Models.Game.Base
+@using AspNetGame.Models.Game.Units
+@model AspNetGame.Models.Game.Units.UnitTemplate
+
+
+<h2>Unit editing</h2>        
+<a href="@Url.Action("Index", "UnitTemplate")" class="btn btn-sm btn-primary">
+    &laquo; Go Back
+</a>
+
+<h3>@Model.Name</h3>
+
+<div class="row">
+    <div class="col-lg-8">
+        <h4>Summary</h4>
+        <table class="table specs">
+            <tbody>
+                <tr>
+                    <td>Nominal health</td>
+                    <td>@Model.MaxHealth HP</td>
+                </tr>
+                <tr>
+                    <td>Building delay</td>
+                    <td>@Model.BuildingDelay</td>
+                </tr>
+                <tr>
+                    <td>Resources costs</td>
+                    <td>@Html.Partial("ResourcesCost", Model.ResourceCosts)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-lg-4">
+        <img src="@(Model.ImagePath ?? "/Content/Images/noimageavailable.png")" class="unit-image" />
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-4">
+        @Html.Partial("~/Views/UnitTemplate/Fragments/Attacker.cshtml", Model)
+    </div>
+
+    <div class="col-lg-4">
+        @Html.Partial("~/Views/UnitTemplate/Fragments/Mobile.cshtml", Model)
+    </div>
+
+    <div class="col-lg-4">
+        @Html.Partial("~/Views/UnitTemplate/Fragments/Extractor.cshtml", Model)
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-4">
+        @Html.Partial("~/Views/UnitTemplate/Fragments/Builder.cshtml", Model)
+    </div>
+
+    <div class="col-lg-4">
+        @Html.Partial("~/Views/UnitTemplate/Fragments/Researcher.cshtml", Model)
+    </div>
+
+    <div class="col-lg-4">
+        @Html.Partial("~/Views/UnitTemplate/Fragments/Storage.cshtml", Model)
+    </div>
+</div>

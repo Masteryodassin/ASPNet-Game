@@ -1,0 +1,29 @@
+﻿@using AspNetGame.Models.Game.Base
+@using AspNetGame.Models.Game.Units
+@model AspNetGame.Models.Game.Units.UnitTemplate
+
+@{
+    bool isMobile = AbilitiesHelper.IsMobile(Model);
+}
+
+    <div class="panel @(isMobile ? "panel-primary" : "panel-default strikeout")">
+        <div class="panel-heading">
+            <h3 class="panel-title">Mobile</h3>
+        </div>
+        @{
+            if (isMobile)
+            {
+                <div class="panel-body">
+                    <p><em>A unit that can move from a planet to another.
+                        </em></p>
+
+                    <table class="table specs">
+                        <tr>
+                            <td>Speed</td>
+                            <td>@Model.Speed</td>
+                        </tr>
+                    </table>
+                </div>
+            }
+        }
+    </div>

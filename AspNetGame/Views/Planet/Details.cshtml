@@ -1,0 +1,35 @@
+﻿@model AspNetGame.Models.Game.Planet
+@using AspNetGame.Models.Game;
+@using AspNetGame.Models.Game.ViewModels;
+@using AspNetGame.Models.Game.Units;
+@{
+    ViewBag.Title = "List of Building Types";
+    ResourcesViewModel resourcesVM = ResourcesViewModel.Build(ViewBag.Player);
+}
+
+<div class="row">
+    @foreach (var Unite in ViewBag.templateNumber)
+    {
+        object unit = Unite.Key;
+        UnitTemplate unitTemplate = (UnitTemplate)unit;
+    <div class="col-lg-3 flex-column">
+       
+
+            <div>@Unite.Value</div>
+            <div>@Html.Partial("BuildingTypeCard", unit)</div>
+            <div style="height: 120px"></div>
+        
+        
+        @using (Html.BeginForm("CreateBuilding", "Planet", FormMethod.Post))
+            {
+             @Html.AntiForgeryToken()
+             @Html.Hidden("Id", @Model.Id)
+             @Html.Hidden("buildingId",@unitTemplate.Id)
+            <input type="submit" class="btn btn btn-primary" value="Create" />
+            }
+     </div>
+          
+    }
+</div>
+
+@Html.Partial("ResourcesCounters", resourcesVM)

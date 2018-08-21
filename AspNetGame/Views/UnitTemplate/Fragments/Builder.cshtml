@@ -1,0 +1,44 @@
+﻿@using AspNetGame.Models.Game.Base
+@using AspNetGame.Models.Game.Units
+@model AspNetGame.Models.Game.Units.UnitTemplate
+
+@{
+    bool isBuilder = AbilitiesHelper.IsBuilder(Model);
+}
+
+<div class="panel @(isBuilder ? "panel-primary" : "panel-default strikeout")">
+    <div class="panel-heading">
+        <h3 class="panel-title">Builder</h3>
+    </div>
+    @{
+        if (isBuilder)
+        {
+    <div class="panel-body">
+        <p>
+            <em>
+                A unit that can build other units and building
+                thanks to its building stack.
+            </em>
+        </p>
+
+        <table class="table specs">
+            <tr>
+                <td>Can build</td>
+                <td>
+                    <ul>
+                        @foreach (var building in Model.AvailableBuildings)
+                        {
+                            <li>building.Name</li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Building Speed Ratio</td>
+                <td>@Model.BuildingSpeedRatio</td>
+            </tr>
+        </table>
+    </div>
+        }
+    }
+</div>
