@@ -103,5 +103,16 @@ namespace AspNetGame.Models.Game.Units
         /// Boolean setting the activity of the current UnitTemplate
         /// </summary>
         public bool isActive { get; set; }
+
+
+        public override bool Equals(object obj)
+        {
+            return (obj is UnitTemplate) && ((obj as UnitTemplate).Id == Id);
+        }
+
+        public override int GetHashCode()
+        {
+            return (int) Id;
+        }
     }
 }

@@ -8,6 +8,6 @@
 {
     @Html.Partial("PlanetCard", planet);
 
-    @Html.ActionLink("Create a new building", "Index", "Building", new {Id = planet.Id }, new { @class = "btn btn-success" })
+    @Html.ActionLink("Explore", "Details", new { Id = planet.Id }, new { @class = "btn btn-success" });
 
 }

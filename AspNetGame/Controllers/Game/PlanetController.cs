@@ -1,5 +1,6 @@
 ﻿using AspNetGame.Controllers.Game.Core;
 using AspNetGame.Models.Game;
+using AspNetGame.Models.Game.Units;
 using AspNetGame.Repositories;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,12 @@ namespace AspNetGame.Controllers.Game
     public class PlanetController : GameController<Planet>
     {
         private readonly PlayerRepository PlayersRepo;
+        private readonly UnitTemplateRepository UnitTemplateRepo;
 
         public PlanetController() : base(new PlanetRepository())
         {
             PlayersRepo = IoC.Resolve<PlayerRepository>();
+            UnitTemplateRepo = IoC.Resolve<UnitTemplateRepository>();
         }
 
         private async Task<IEnumerable<Planet>> GetPlayerPlanets()
@@ -99,5 +102,33 @@ namespace AspNetGame.Controllers.Game
         {
             return new HttpStatusCodeResult(501);
         }
+
+        public override async Task<ActionResult> Details(long Id)
+        {
+            ViewBag.Player = await GetPlayer();
+            Planet planet = await (Repository.Find(Id));
+
+            Dictionary<UnitTemplate, int> templateNumber = new Dictionary<UnitTemplate, int>();
+
+            var activeUnitTemplate = (await UnitTemplateRepo.GetAll()).Where(u => u.isActive == true).ToList();
+        
+            foreach (UnitTemplate unitTemplate in activeUnitTemplate)
+            {
+                templateNumber.Add(unitTemplate, 0);               
+            }
+
+            foreach (UnitTemplate pUnitTemplate in planet.Units)
+            {
+                if (activeUnitTemplate.Contains(pUnitTemplate))
+                {
+                    var a = templateNumber[pUnitTemplate];
+                    templateNumber[pUnitTemplate] = ++a;
+                }
+            }
+
+            ViewBag.templateNumber = templateNumber;
+            return View(planet);
+        }
+
     }
 }

@@ -46,7 +46,8 @@ table.specs tr td:nth-child(2n+1) {
 
 .unit-image 
 {
-    max-width: 300px;
+    max-width: 100px;
+    max-height: 100px;
     object-fit: contain;
     object-position: center;
 }
