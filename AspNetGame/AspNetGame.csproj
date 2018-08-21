@@ -270,6 +270,7 @@
     <Compile Include="Models\Game\Timeloop\ITimeloopService.cs" />
     <Compile Include="Models\Game\Timeloop\TimeloopService.cs" />
     <Compile Include="Models\Game\Timeloop\TimeloopThread.cs" />
+    <Compile Include="Models\Game\Units\Unit.cs" />
     <Compile Include="Models\Game\Units\UnitTemplate.cs" />
     <Compile Include="Models\Game\ViewModels\ResourcesModel.cs" />
     <Compile Include="Repositories\Core\BaseRepository.cs" />
@@ -278,6 +279,7 @@
     <Compile Include="Repositories\PlanetRepository.cs" />
     <Compile Include="Repositories\PlayerRepository.cs" />
     <Compile Include="Repositories\ResourceRepository.cs" />
+    <Compile Include="Repositories\UnitRepository.cs" />
     <Compile Include="Repositories\UnitTemplateRepository.cs" />
     <Compile Include="Services\IoC.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -346,51 +348,6 @@
     </Content>
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Content\Site.css" />
-    <Content Include="Services\Views\Web.config" />
-    <Content Include="Services\Views\_ViewStart.cshtml" />
-    <Content Include="Services\Views\Home\Index.cshtml" />
-    <Content Include="Services\Views\Shared\Error.cshtml" />
-    <Content Include="Services\Views\Shared\_Layout.cshtml" />
-    <Content Include="Services\Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Services\Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Services\Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Services\Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Services\Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Services\Views\Account\Login.cshtml" />
-    <Content Include="Services\Views\Account\Register.cshtml" />
-    <Content Include="Services\Views\Account\ResetPassword.cshtml" />
-    <Content Include="Services\Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Services\Views\Account\SendCode.cshtml" />
-    <Content Include="Services\Views\Account\VerifyCode.cshtml" />
-    <Content Include="Services\Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Services\Views\Users\Index.cshtml" />
-    <Content Include="Services\Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Services\Views\Role\Create.cshtml" />
-    <Content Include="Services\Views\Role\Index.cshtml" />
-    <Content Include="Services\Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Services\Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Services\Views\Manage\Index.cshtml" />
-    <Content Include="Services\Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Services\Views\Manage\SetPassword.cshtml" />
-    <Content Include="Services\Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Services\Views\Resource\Details.cshtml" />
-    <Content Include="Services\Views\Resource\Index.cshtml" />
-    <Content Include="Services\Views\Shared\ResourcesCost.cshtml" />
-    <Content Include="Services\Views\UnitTemplate\Create.cshtml" />
-    <Content Include="Services\Views\UnitTemplate\Details.cshtml" />
-    <Content Include="Services\Views\UnitTemplate\Fragments\Attacker.cshtml" />
-    <Content Include="Services\Views\UnitTemplate\Fragments\Builder.cshtml" />
-    <Content Include="Services\Views\UnitTemplate\Fragments\Extractor.cshtml" />
-    <Content Include="Services\Views\UnitTemplate\Fragments\Mobile.cshtml" />
-    <Content Include="Services\Views\UnitTemplate\Fragments\Researcher.cshtml" />
-    <Content Include="Services\Views\UnitTemplate\Fragments\Storage.cshtml" />
-    <Content Include="Services\Views\UnitTemplate\Index.cshtml" />
-    <Content Include="Services\Views\Planet\Create.cshtml" />
-    <Content Include="Services\Views\Planet\Index.cshtml" />
-    <Content Include="Services\Views\Shared\PlanetCard.cshtml" />
-    <Content Include="Services\Views\Building\Create.cshtml" />
-    <Content Include="Services\Views\Building\Index.cshtml" />
-    <Content Include="Services\Views\Shared\BuildingTypeCard.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
@@ -440,7 +397,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Services\Views\Player\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Player\" />
   </ItemGroup>

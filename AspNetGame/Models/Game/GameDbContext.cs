@@ -59,6 +59,10 @@ namespace AspNetGame.Models.Game
         public System.Data.Entity.DbSet<UnitTemplate> UnitTemplates { get; set; }
 
         /// <summary>
+        /// Units DbSet
+        /// </summary>
+        public System.Data.Entity.DbSet<Unit> Units { get; set; }
+        /// <summary>
         /// Players DbSet
         /// </summary>
         public System.Data.Entity.DbSet<Player> Players { get; set; }

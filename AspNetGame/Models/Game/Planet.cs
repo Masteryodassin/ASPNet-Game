@@ -30,12 +30,12 @@ namespace AspNetGame.Models.Game
             /// <summary>
             /// List of Unit types built on this planet
             /// </summary>
-        public List<UnitTemplate> Units { get; set; }
+        public List<Unit> Units { get; set; }
 
 
         public Planet()
         {
-            this.Units = new List<UnitTemplate>();
+            this.Units = new List<Unit>();
         }
 
     }

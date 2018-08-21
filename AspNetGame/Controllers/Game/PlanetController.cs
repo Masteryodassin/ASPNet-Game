@@ -109,7 +109,7 @@ namespace AspNetGame.Controllers.Game
         public override async Task<ActionResult> Details(long Id)
         {
             ViewBag.Player = await GetPlayer();
-            Planet planet = await (Repository.Find(Id));
+            Planet planet = await Repository.Find(Id);
 
             Dictionary<UnitTemplate, int> templateNumber = new Dictionary<UnitTemplate, int>();
 
@@ -117,16 +117,7 @@ namespace AspNetGame.Controllers.Game
         
             foreach (UnitTemplate unitTemplate in activeUnitTemplate)
             {
-                templateNumber.Add(unitTemplate, 0);               
-            }
-
-            foreach (UnitTemplate pUnitTemplate in planet.Units)
-            {
-                if (activeUnitTemplate.Contains(pUnitTemplate))
-                {
-                    var a = templateNumber[pUnitTemplate];
-                    templateNumber[pUnitTemplate] = ++a;
-                }
+                templateNumber.Add(unitTemplate, planet.Units.Count(u => u.UnitTemplateId == unitTemplate.Id));
             }
 
             ViewBag.templateNumber = templateNumber;
@@ -143,13 +134,15 @@ namespace AspNetGame.Controllers.Game
                 if (ModelState.IsValid)
                 {
 
-                    UnitTemplate building = db.UnitTemplates.FirstOrDefault(u => u.Id == BuildingId);
-                    db.UnitTemplates.Attach(building);
-                    planet.Units.Add(building);
+                    Unit building = new Unit()
+                    {
+                        PlanetId = planet.Id,
+                        UnitTemplateId = db.UnitTemplates.FirstOrDefault(u => u.Id == BuildingId).Id,
+                    };
 
-                    db.Planets.Attach(planet);
-                    db.Entry<Planet>(planet).State = System.Data.Entity.EntityState.Modified;
-                    await db.SaveChangesAsync();  
+                    db.Units.Add(building);
+                    await db.SaveChangesAsync();
+       
                   
                 }
             }
@@ -158,7 +151,7 @@ namespace AspNetGame.Controllers.Game
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
            
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", new { planet.Id });
         }
 
     }
