@@ -12,20 +12,26 @@ using System.Web.Mvc;
 namespace AspNetGame.Controllers.Game
 {
     [Authorize(Roles = "Player")]
-    public class BuildingController : GameController<UnitTemplate>
+    public class BuildingController : GameController<Planet>
     {
         
 
-        public BuildingController() : base(new UnitTemplateRepository())
+        public BuildingController() : base(new PlanetRepository())
         {
            
         }
 
         // GET: Building
-        
-          private async Task<IEnumerable<UnitTemplate>> GetPlanetBuilding(int Id)
+        //public override Task<ActionResult> Index()
+        //{
+        //    return base.Index(GetPlanetBuilding());
+        //}
+
+
+        private async Task<IEnumerable<Planet>> GetPlanetBuilding(int Id)
         {
-            return (await Repository.GetAllIncluding(u => u.isActive & u.Planets.Exists(p => p.Id == Id))).ToList();
+            IEnumerable<Planet>  tps = (await Repository.GetAllIncluding(p => p.Id == Id)).ToList();
+            return tps;
         }
         
     }

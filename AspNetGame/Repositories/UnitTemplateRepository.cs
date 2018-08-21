@@ -20,7 +20,8 @@ namespace AspNetGame.Repositories
                 e => e.ExtractedResource,
                 e => e.StoredResource,
                 e => e.ResourceCosts.Select(c => c.Resource),
-                e => e.AvailableBuildings
+                e => e.AvailableBuildings,
+                e => e.Planets
             };
         }
     }
