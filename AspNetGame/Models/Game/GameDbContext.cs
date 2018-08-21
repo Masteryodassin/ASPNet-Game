@@ -73,5 +73,9 @@ namespace AspNetGame.Models.Game
         /// </summary>
         public System.Data.Entity.DbSet<Param> Params { get; set; }
 
+        public System.Data.Entity.DbSet<ResourceAmount> ResourceAmount { get; set; }
+
+        public System.Data.Entity.DbSet<Resource> Resource { get; set; }
+
     }
 }

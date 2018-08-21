@@ -15,6 +15,6 @@ namespace AspNetGame.Models.Game.Contracts
     {
         Resource ExtractedResource { get; set; }
 
-        long ExtractionAmount { get; set; }
+        long ExtractionCapacity { get; set; }
     }
 }

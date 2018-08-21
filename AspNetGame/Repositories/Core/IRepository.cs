@@ -24,6 +24,8 @@ namespace AspNetGame.Repositories
         /*IEnumerable<TEntity> FindBy(
             params Tuple<Expression<Func<TEntity, object>>, object>[] criterion);*/
 
+        Task<IEnumerable<TEntity>> FindAll(Predicate<TEntity> predicate);
+
         Task<TEntity> Find(Predicate<TEntity> predicate);
 
         void Insert(TEntity entity);

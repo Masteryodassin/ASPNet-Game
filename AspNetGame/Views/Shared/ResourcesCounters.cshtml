@@ -1,34 +1,45 @@
-﻿@model AspNetGame.Models.Game.ViewModels.ResourcesViewModel
-@using AspNetGame.Models.Game.ViewModels
+﻿@model IEnumerable<AspNetGame.Models.Game.Base.ResourceAmount>
+@using AspNetGame.Models.Game.Base
+
 
 <script type="text/javascript">
 
-    let resources = @Html.Raw(Json.Encode(Model.ResourceAmounts));
+    @*let resources = @Html.Raw(Json.Encode(Model));*@
 
     window.addEventListener('load', (ev) => {
-        setInterval(() => {
-            resources.forEach(updateAmount)
-        }, @Model.TickSize * 1000);
+        setInterval(updateAmount, @ViewBag.TickSize * 1000);
     });
 
-    function updateAmount(resource) {
+    /*function updateAmount(resource) {
         resource.Amount += resource.GainPerTick;
         document.getElementById('res-' + resource.Id).innerHTML = resource.Amount;
 
+    }*/
+
+    function updateAmount() {
+        jQuery.getJSON("@Url.Action("Index", "ResourceAmount")",
+            (data) => {
+                data.forEach(amount => {
+                    console.log(amount);
+                    document.getElementById('res-' + amount.Resource.Id).innerHTML = amount.Amount;
+                })
+            });
     }
+
+
 
 </script>
 
 <div class="sticky">
     <ul class="resources-bar">
-        @foreach (ResourceViewModel resource in Model.ResourceAmounts)
+        @foreach (ResourceAmount amount in Model)
         {
             <li>
-                <div class="resource-bar-icons" title="@resource.Resource.Name">
-                    <img src="@resource.Resource.ImagePath" />
-                    <div id="res-@resource.Id">@resource.Amount</div>
+                <div class="resource-bar-icons" title="@amount.Resource.Name">
+                    <img src="@amount.Resource.ImagePath" />
+                    <div id="res-@amount.Resource.Id">@amount.Amount</div>
                 </div>
-                 
+
             </li>
         }
     </ul>

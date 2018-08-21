@@ -80,6 +80,12 @@ namespace AspNetGame.Repositories.Core
             return (await GetAll()).SingleOrDefault(pred);
         }
 
+        public async Task<IEnumerable<TEntity>> FindAll(Predicate<TEntity> predicate)
+        {
+            bool pred(TEntity e) => predicate.Invoke(e);
+            return (await GetAll()).Where(pred);
+        }
+
         public virtual void Insert(TEntity entity)
         {
             Context.Entry(entity).State = EntityState.Added;

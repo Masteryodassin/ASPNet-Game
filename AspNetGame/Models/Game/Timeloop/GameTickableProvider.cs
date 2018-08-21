@@ -1,4 +1,5 @@
-﻿using AspNetGame.Repositories;
+﻿using AspNetGame.Models.Game.Core;
+using AspNetGame.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,30 +8,36 @@ using System.Web;
 
 namespace AspNetGame.Models.Game.Timeloop
 {
-    public class GameTickableProvider : ITickableProvider
+    public class GameTickables : ITickable
     {
 
         private GameDbContext Context = IoC.Resolve<GameDbContext>();
+        
         private PlayerRepository Players = IoC.Resolve<PlayerRepository>();
 
-        private List<ITickable> tickables = new List<ITickable>();
 
 
-        public GameTickableProvider()
+        public GameTickables()
         {
-            Init();
         }
 
-        private async void Init()
-        {
-            tickables.AddRange(await Players.GetAll());
-        }
 
-        public async Task<IEnumerable<ITickable>> Provide()
+        public async Task<IEnumerable<ITickable>> Get()
         {
             var tickables = new List<ITickable>();
+
             tickables.AddRange(await Players.GetAll());
             return tickables;
+        }
+
+        public async void Tick(long count)
+        {
+            foreach (var tickable in await Get())
+            {
+                tickable.Tick(count);
+                await Players.Save();
+            }
+            
         }
     }
 }
